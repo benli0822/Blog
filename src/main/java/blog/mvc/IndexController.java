@@ -1,4 +1,4 @@
-package blog.controller;
+package blog.mvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by JIN Benli on 17/11/14.
  */
 @Controller
-public class GreetingController {
+public class IndexController {
 
-    @RequestMapping("/greeting")
+    @RequestMapping("/")
     public String greeting() {
-        return "greeting";
+        return "index";
     }
 
 }
