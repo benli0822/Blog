@@ -30,7 +30,7 @@
     </dependencies>
 
     <properties>
-        <start-class>hello.Application</start-class>
+        <start-class>blog.Application</start-class>
     </properties>
 
     <build>
