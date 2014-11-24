@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title></title>
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+    <script th:src="@{/js/jquery.min.js}" src="../static/js/jquery.min.js"></script>
+    <script th:src="@{/js/skel.min.js}" src="../static/js/skel.min.js"></script>
+    <script th:src="@{/js/skel-layers.min.js}" src="../static/js/skel-layers.min.js"></script>
+    <script th:src="@{/js/init.js}" src="../static/js/init.js"></script>
+    <noscript>
+        <link rel="stylesheet" th:href="@{/css/skel.css}" href="../static/css/skel.css" />
+        <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css" />
+        <link rel="stylesheet" th:href="@{/css/style-desktop.css}" href="../static/css/style-desktop.css" />
+        <link rel="stylesheet" th:href="@{/css/style-wide.css}" href="../static/css/style-wide.css" />
+    </noscript>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" th:href="@{/css/ie/v8.css}" href="../static/css/ie/v8.css"/><![endif]-->
+    <div layout:fragment="css"></div>
+</head>
+<body>
+<div layout:fragment="content"></div>
+</body>
+</html>

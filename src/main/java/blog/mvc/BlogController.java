@@ -11,6 +11,6 @@ public class BlogController {
 
     @RequestMapping("post")
     public String post() {
-        return "post";
+        return "view/post";
     }
 }

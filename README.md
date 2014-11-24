@@ -1,7 +1,6 @@
 Blog
 ====
-
-SJBS Blog
+Blog
 
 Sample en ligne tous les exemples
 https://github.com/spring-projects/spring-boot/tree/1.1.x/spring-boot-samples
@@ -11,12 +10,12 @@ src
 		java
 			blog
 				config
-					Database.class
+					Database.class // chaque partie une configuration
 				mvc
 
 				rest
 
-				domain
+				domain // toutes les entitys
 
 				service
 					repository

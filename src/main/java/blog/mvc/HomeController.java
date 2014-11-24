@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by JIN Benli on 17/11/14.
  */
 @Controller
-public class IndexController {
+public class HomeController {
 
-    @RequestMapping("/")
-    public String greeting() {
-        return "index";
+    @RequestMapping("/home")
+    public String home() {
+        return "view/home";
     }
 
 }
