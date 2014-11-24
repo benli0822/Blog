@@ -22,6 +22,11 @@
                     <td><textarea placeholder="Content of article"></textarea></td> <!-- th:field="*{contentArticle}" -->
                     <td>Content article Error</td>	<!-- th:if="${#fields.hasErrors('contentArticle')}" th:errors="*{contentArticle}" -->
                 </tr>
+				<tr>
+                    <td>Key word :</td>
+                    <td><input type="text" placeholder="List of key word for this article" /></td>
+                    <td>Content article Error</td>
+                </tr>
                 <tr>
                     <td><button type="submit">Submit</button></td>
                 </tr>
