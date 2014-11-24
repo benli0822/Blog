@@ -6,22 +6,27 @@
 <body>
 
 <div layout:fragment="content">
-<form action="#" th:action="@{/}" method="post">  <!-- //TODO ajouter l'assocation avec entity th:object="${Article}" --> 
+<form action="#" method="post">  <!-- //TODO ajouter l'assocation avec entity th:action="@{/}" th:object="${Article}" --> 
             <table>
                 <tr>
                     <td>Name author:</td>
-                    <td><input type="text" th:field="*{nameAuthor}" placeholder="Your name"/></td>
-                    <td th:if="${#fields.hasErrors('nameAuthor')}" th:errors="*{nameAuthor}">Name author Error</td>
+                    <td><input type="text" placeholder="Your name"/></td> <!-- th:field="*{nameAuthor}" -->
+                    <td>Name author Error</td> <!-- th:if="${#fields.hasErrors('nameAuthor')}" th:errors="*{nameAuthor}" -->
                 </tr>
                 <tr>
                     <td>Title :</td>
-                    <td><textarea type="text" th:field="*{titleArticle}" placeholder="Title of article"/></td>
-                    <td th:if="${#fields.hasErrors('titleArticle')}" th:errors="*{titleArticle}">Title article Error</td>
+                    <td><input placeholder="Title of article"/></td> <!-- th:field="*{titleArticle}"  -->
+                    <td>Title article Error</td> <!-- th:if="${#fields.hasErrors('titleArticle')}" th:errors="*{titleArticle}" -->
                 </tr>
                 <tr>
                     <td>Content article :</td>
-                    <td><input type="text" th:field="*{contentArticle}" placeholder="Content of article"></textarea></td>
-                    <td th:if="${#fields.hasErrors('contentArticle')}" th:errors="*{contentArticle}">Content article Error</td>
+                    <td><textarea placeholder="Content of article"></textarea></td> <!-- th:field="*{contentArticle}" -->
+                    <td>Content article Error</td>	<!-- th:if="${#fields.hasErrors('contentArticle')}" th:errors="*{contentArticle}" -->
+                </tr>
+				<tr>
+                    <td>Key word :</td>
+                    <td><input type="text" placeholder="List of key word for this article" /></td>
+                    <td>Content article Error</td>
                 </tr>
                 <tr>
                     <td><button type="submit">Submit</button></td>
