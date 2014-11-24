@@ -18,7 +18,7 @@ src
 				config	{ Configuration for each componant in blog application }
 				mvc	{ Web mvc controllers }
 					HomeController.java	{ Home page controller, including listing blogs }
-					BlogController.java	{ Blog controller, including blogs's CRUD operation }
+					BlogController.java	{ Blog controller, including blogs CRUD operation }
 				rest	{ REST Service controllers }
 						
 				domain 	{ Entity, objects }
@@ -26,7 +26,7 @@ src
 				service	{ Level Service }
 					repository { Repository for all entities }
 				jms 	{ JMS Service }
-			Application.class 	{ Global configuration, project's open class }
+			Application.class 	{ Global configuration, project open class }
 		resources
 			static		{ Static resources }
 				css
@@ -47,8 +47,6 @@ src
 					login.html
 					register.html
 					setting.html
-					...
-```java
 
 
 
