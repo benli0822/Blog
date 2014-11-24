@@ -14,4 +14,8 @@ public class HomeController {
         return "view/home";
     }
 
+    @RequestMapping("/simpleArticle")
+    public String simpelArticle() {
+        return "view/simpleArticle";
+    }
 }
