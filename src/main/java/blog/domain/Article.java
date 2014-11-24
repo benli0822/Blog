@@ -1,10 +1,9 @@
 package blog.domain;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,6 +20,11 @@ public class Article {
     private String content;
 
     private Set<String> keyword;
+
+    private Date time;
+
+    @OneToMany(fetch=FetchType.LAZY)
+    private List<Comment> comments;
 
     protected Article() {
     }

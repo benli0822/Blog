@@ -3,6 +3,7 @@ package blog.domain;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by JIN Benli on 24/11/14.
@@ -22,6 +23,8 @@ public class Comment {
     private User author;
 
     private String content;
+
+    private Date time;
 
     protected Comment() {
     }
