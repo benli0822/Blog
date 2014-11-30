@@ -25,12 +25,14 @@
     <link rel="stylesheet" th:href="@{/css/ie/v8.css}" href="../static/css/ie/v8.css"/><![endif]-->
     <div layout:fragment="css"></div>
 </head>
-<body>
+<body class="left-sidebar">
 <!-- Wrapper -->
 <div id="wrapper">
     <div layout:fragment="content"></div>
 
     <div layout:include="common/sidebar :: sidebar"></div>
 </div>
+
+<div layout:fragment="script"></div>
 </body>
 </html>
