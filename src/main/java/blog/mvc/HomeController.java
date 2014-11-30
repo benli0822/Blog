@@ -18,4 +18,9 @@ public class HomeController {
     public String simpelArticle() {
         return "view/simpleArticle";
     }
+
+    @RequestMapping("/setting")
+    public String setting(){
+        return "view/userSetting";
+    }
 }

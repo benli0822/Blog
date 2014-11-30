@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<body>
+<div layout:fragment="content">
+    <div id="content">
+        <div class="inner">
+            <article class="box post post-excerpt">
+                <!-- <div class="row">
+                    <div class="span2">
+                    </div>
+                    <div class="span8"> -->
+
+                <form action="#" method="post" style="margin-left:20%">  <!-- //TODO ajouter l'assocation avec entity -->
+                    <h2>User setting</h2>
+                    <p>
+
+                        <label for="userNickName">User nickname :</label>
+                        <input type="text" name="userNickName" id="userNickName" placeholder="Nickname of user"/>
+
+                        <label for="userPassword">Password :</label>
+                        <input type="password" name="userPassword" id="userPassword" placeholder="Password of user"/>
+
+                        <label for="userConformPassword">Confirm password :</label>
+                        <input type="password" name="userConformPassword" id="userConformPassword" placeholder="userConformPassword"/>
+
+                        <br /><br />
+
+                    </p>
+                    <p>
+                        <h5>Social network setting</h5>
+                        <label>connect to Facebook</label>
+                        <br />
+                        <label>connect to Twitter</label>
+                    </p>
+                    <input type="submit" value="Save user setting"/>
+                </form>
+                <!-- </div>
+            </div> -->
+            </article>
+        </div>
+    </div>
+</div>
+</body>
+</html>
