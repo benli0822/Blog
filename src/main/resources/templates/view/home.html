@@ -14,8 +14,8 @@
 -->
 
 <div layout:fragment="css">
-    <link rel="stylesheet" th:href="@{/css/scrollToTop.css}" />
-    <link rel="stylesheet" th:href="@{/css/easing.css}" />
+    <link rel="stylesheet" th:href="@{/css/scrollToTop.css}"/>
+    <link rel="stylesheet" th:href="@{/css/easing.css}"/>
 </div>
 
 <body class="left-sidebar">
@@ -23,10 +23,10 @@
     <!-- Content -->
     <div id="content">
         <div class="inner">
-                                    <tr th:each="article : ${articles}">
-                                    <td><a href="#" th:text="${article.title}">Title ...</a></td>
-                                    <td th:text="${article.content}">Text ...</td>
-                                    </tr>
+            <tr th:each="article : ${articles}">
+                <td><a href="#" th:text="${article.title}">Title ...</a></td>
+                <td th:text="${article.content}">Text ...</td>
+            </tr>
             <!-- Post -->
             <article class="box post post-excerpt">
                 <header>
@@ -60,7 +60,8 @@
                         <li><a href="#" class="icon fa-facebook">128</a></li>
                     </ul>
                 </div>
-                <a href="#" class="image featured"><img src="../static/images/pic01.jpg" th:src="@{/images/pic01.jpg}" alt=""/></a>
+                <a href="#" class="image featured"><img src="../static/images/pic01.jpg" th:src="@{/images/pic01.jpg}"
+                                                        alt=""/></a>
 
                 <p>
                     <strong>Hello!</strong> You're looking at <strong>Striped</strong>, a fully responsive HTML5 site
@@ -98,7 +99,8 @@
                         <li><a href="#" class="icon fa-facebook">128</a></li>
                     </ul>
                 </div>
-                <a href="#" class="image featured"><img src="../static/images/pic02.jpg" th:src="@{/images/pic02.jpg}" alt=""/></a>
+                <a href="#" class="image featured"><img src="../static/images/pic02.jpg" th:src="@{/images/pic02.jpg}"
+                                                        alt=""/></a>
 
                 <p>
                     Quisque vel sapien sit amet tellus elementum ultricies. Nunc vel orci turpis. Donec id malesuada
@@ -133,7 +135,7 @@
     <script th:src="@{/js/jquery-scrollToTop.js}"></script>
     <script th:src="@{/js/jquery-scrollToTop.js}"></script>
     <script type="text/javascript">
-        $(document).ready(function($) {
+        $(document).ready(function ($) {
             $('body').scrollToTop({skin: 'cycle'});
         });
     </script>

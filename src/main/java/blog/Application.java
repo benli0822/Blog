@@ -39,6 +39,18 @@ public class Application {
 
         articleRepository.save(articleTest);
 
+        User admin = new User();
+
+        admin.setUsername("admin");
+        admin.setPassword("admin");
+        admin.setFirstname("admin");
+        admin.setLastname("admin");
+        admin.setEmail("admin");
+        admin.setTwitter("admin");
+        admin.setFacebook("admin");
+
+        userRepository.save(admin);
+
     }
 
 }

@@ -46,6 +46,10 @@ public class User {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -107,6 +111,12 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", facebook='" + facebook + '\'' +
+                ", twitter='" + twitter + '\'' +
                 '}';
     }
 }

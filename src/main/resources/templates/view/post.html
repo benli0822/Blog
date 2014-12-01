@@ -22,16 +22,20 @@
 							class="year">, 2014</span></span>
 				</div>
 				<h2>Create of article</h2>
-						<form action="#" method="post" th:object="${article}" th:action="@{/post}">  <!-- //TODO ajouter l'assocation avec entity -->
+						<form action="#" method="post" th:action="@{/post}">  <!-- //TODO ajouter l'assocation avec entity -->
 
 							<div class="row uniform">
 								<div class="6u 12u$(4)">
 									<label for="authorArticle">Author name :</label>
-									<input type="text" name="authorArticle" id="authorArticle" placeholder="Author of article" th:field="*{author}"/>
+									<!--<input type="text" name="authorArticle" id="authorArticle" th:placeholder="${session.admin.username}" th:id="${session.admin.id}" th:field="*{author}" disabled="true"/>-->
+
+									<div th:each="user, stat : ${users}">
+										<label name="authorArticle" id="authorArticle" th:text="*{users[__${stat.index}__].username}" th:if="${session.admin.equals(users[__${stat.index}__])}"/>
+									</div>
 								</div>
 								<div class="6u$ 12u$(4)">
 									<label for="titleArticle">Title :</label>
-									<input type="text" name="titleArticle" id="titleArticle" placeholder="Title of article" th:field="*{title}"/>
+									<input type="text" name="titleArticle" id="titleArticle" placeholder="Title of article" th:field="*{article.title}"/>
 								</div>
 
 								<div class="6u$ 12u$(4)">
@@ -76,7 +80,7 @@
 								<div class="12u$">
 									<label for="contentArticle">Content of article :</label>
 									<textarea name="contentArticle" id="contentArticle" rows="6"
-											  placeholder="Content of this article" th:field="*{content}"></textarea>
+											  placeholder="Content of this article" th:field="*{article.content}"></textarea>
 								</div>
 								<!-- Break -->
 								<div class="12u$">

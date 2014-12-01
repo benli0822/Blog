@@ -2,6 +2,7 @@ package blog.mvc;
 
 import blog.Application;
 import blog.service.repository.ArticleRepository;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
@@ -15,12 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Import(Application.class)
 public class HomeController {
 
+    private Logger log = Logger.getLogger(HomeController.class);
+
     @Autowired
     private ArticleRepository articleRepository;
 
     @RequestMapping(value = "/home")
     public String home(Model model) {
+        log.info("[HomeController: home], mapped by home");
         model.addAttribute("articles", articleRepository.findAll());
+        log.info(model);
         return "view/home";
     }
 

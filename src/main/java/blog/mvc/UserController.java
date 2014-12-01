@@ -2,6 +2,7 @@ package blog.mvc;
 
 import blog.Application;
 import blog.domain.User;
+import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,6 +19,8 @@ public class UserController {
 
 //    @Autowired
 //    private ArticleService articleService;
+
+    private Logger log = Logger.getLogger(UserController.class);
 
     @RequestMapping(value = "update")
     public String update() {
