@@ -49,11 +49,29 @@ public class UserSerivceImpl implements UserService {
         User user = userRepository.findOne(uid);
         for(String key : values.keySet()) {
             String value = values.get(key);
+
+            if(value.equals("firstname")) {
+                user.setFirstname(value);
+            } else if (value.equals("lastname")) {
+                user.setLastname(value);
+            } else if (value.equals("email")) {
+                user.setEmail(value);
+            } else if (value.equals("facebook")) {
+                user.setFacebook(value);
+            } else if (value.equals("twitter")) {
+                user.setTwitter(value);
+            } else if (value.equals("password")) {
+                user.setPassword(value);
+            } else {
+                //TODO case handler
+            }
         }
+
+        return userRepository.save(user);
     }
 
     @Override
-    public boolean deleteUser(long uid) {
-        return false;
+    public void deleteUser(long uid) {
+        userRepository.delete(uid);
     }
 }

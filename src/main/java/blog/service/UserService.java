@@ -19,5 +19,5 @@ public interface UserService {
 
     public User updateUser(long uid, HashMap<String, String> values);
 
-    public boolean deleteUser(long uid);
+    public void deleteUser(long uid);
 }
