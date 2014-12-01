@@ -1,6 +1,8 @@
 package blog.domain;
 
 
+import org.hibernate.annotations.NaturalId;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -14,6 +16,8 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @OneToOne(optional = false)
+    @NaturalId
     private User author;
 
     private String title;
