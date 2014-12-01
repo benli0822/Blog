@@ -14,8 +14,8 @@
 -->
 
 <div layout:fragment="css">
-    <link rel="stylesheet" href="../static/css/scrollToTop.css" th:href="@{/css/scrollToTop.css}" />
-    <link rel="stylesheet" href="../static/css/easing.css" th:href="@{/css/easing.css}" />
+    <link rel="stylesheet" th:href="@{/css/scrollToTop.css}" />
+    <link rel="stylesheet" th:href="@{/css/easing.css}" />
 </div>
 
 <body class="left-sidebar">
@@ -127,8 +127,8 @@
 </div>
 
 <div layout:fragment="script">
-    <script src="../static/js/jquery-scrollToTop.js" th:src="@{/js/jquery-scrollToTop.js}"></script>
-    <script src="../static/js/jquery-scrollToTop.js" th:src="@{/js/jquery-scrollToTop.js}"></script>
+    <script th:src="@{/js/jquery-scrollToTop.js}"></script>
+    <script th:src="@{/js/jquery-scrollToTop.js}"></script>
     <script type="text/javascript">
         $(document).ready(function($) {
             $('body').scrollToTop({skin: 'cycle'});
