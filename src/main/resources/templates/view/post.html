@@ -3,36 +3,98 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout">
-<body>
+<body class="left-sidebar">
 
 <div layout:fragment="content">
-<form action="#" method="post">  <!-- //TODO ajouter l'assocation avec entity th:action="@{/}" th:object="${Article}" --> 
-            <table>
-                <tr>
-                    <td>Name author:</td>
-                    <td><input type="text" placeholder="Your name"/></td> <!-- th:field="*{nameAuthor}" -->
-                    <td>Name author Error</td> <!-- th:if="${#fields.hasErrors('nameAuthor')}" th:errors="*{nameAuthor}" -->
-                </tr>
-                <tr>
-                    <td>Title :</td>
-                    <td><input type="text" placeholder="Title of article"/></td> <!-- th:field="*{titleArticle}"  -->
-                    <td>Title article Error</td> <!-- th:if="${#fields.hasErrors('titleArticle')}" th:errors="*{titleArticle}" -->
-                </tr>
-                <tr>
-                    <td>Content article :</td>
-                    <td><textarea placeholder="Content of article"></textarea></td> <!-- th:field="*{contentArticle}" -->
-                    <td>Content article Error</td>	<!-- th:if="${#fields.hasErrors('contentArticle')}" th:errors="*{contentArticle}" -->
-                </tr>
-				<tr>
-                    <td>Key word :</td>
-                    <td><input type="text" placeholder="List of key word for this article" /></td>
-                    <td>Content article Error</td>
-                </tr>
-                <tr>
-                    <td><button type="submit">Submit</button></td>
-                </tr>
-            </table>
-        </form>
+    <div id="content">
+        <div class="inner">
+        	<article class="box post post-excerpt">
+				<div class="info">
+					<!--
+                        Note: The date should be formatted exactly as it's shown below. In particular, the
+                        "least significant" characters of the month should be encapsulated in a <span>
+                        element to denote what gets dropped in 1200px mode (eg. the "uary" in "January").
+                        Oh, and if you don't need a date for a particular page or post you can simply delete
+                        the entire "date" element.
+
+                    -->
+                    <span class="date"><span class="month">Jul<span>y</span></span> <span class="day">15</span><span
+							class="year">, 2014</span></span>
+				</div>
+				<h2>Create of article</h2>
+						<form action="#" method="post">  <!-- //TODO ajouter l'assocation avec entity -->
+
+							<div class="row uniform">
+								<div class="6u 12u$(4)">
+									<label for="authorArticle">Author name :</label>
+									<input type="text" name="authorArticle" id="authorArticle" placeholder="Author of article"/>
+								</div>
+								<div class="6u$ 12u$(4)">
+									<label for="titleArticle">Title :</label>
+									<input type="text" name="titleArticle" id="titleArticle" placeholder="Title of article"/>
+								</div>
+
+								<div class="6u$ 12u$(4)">
+									<label for="keyWords">Key words of article :</label>
+									<input type="text" name="keyWords" id="keyWords" placeholder="KeyWords"/>
+								</div>
+								<!-- Break -->
+								<div class="12u$">
+									<div class="select-wrapper">
+										<select name="category" id="category">
+											<option value="">- Category -</option>
+											<option value="1">Manufacturing</option>
+											<option value="1">Shipping</option>
+											<option value="1">Administration</option>
+											<option value="1">Human Resources</option>
+										</select>
+									</div>
+								</div>
+								<!-- Break -->
+								<div class="4u 12u$(3)">
+									<input type="radio" id="privacy-private" name="privacy" checked="true"/>
+									<label for="privacy-private">Private</label>
+								</div>
+								<div class="4u 12u$(3)">
+									<input type="radio" id="privacy-public" name="privacy" />
+									<label for="privacy-public">Public</label>
+								</div>
+								<div class="4u$ 12u$(3)">
+									<input type="radio" id="privacy-me" name="privacy" />
+									<label for="privacy-me">Only me</label>
+								</div>
+								<!-- Break -->
+								<div class="6u 12u$(3)">
+									<input type="checkbox" id="PostFacebook" name="PostFacebook" checked="true" />
+									<label for="PostFacebook">Post of Facebook</label>
+								</div>
+								<div class="6u$ 12u$(3)">
+									<input type="checkbox" id="PostTwitter" name="PostTwitter" checked="true" />
+									<label for="PostTwitter">Post of Twitter</label>
+								</div>
+								<!-- Break -->
+								<div class="12u$">
+									<label for="contentArticle">Content of article :</label>
+									<textarea name="contentArticle" id="contentArticle" rows="6"
+											  placeholder="Content of this article"></textarea>
+								</div>
+								<!-- Break -->
+								<div class="12u$">
+									<ul class="actions">
+										<li><input type="submit" value="Create article" /></li>
+										<li><input type="reset" value="Reset" class="alt" /></li>
+									</ul>
+								</div>
+							</div>
+
+
+
+				          </form>
+					<!-- </div>
+				</div> -->
+			</article>
+		</div>
+	</div>
 </div>
 </body>
 </html>

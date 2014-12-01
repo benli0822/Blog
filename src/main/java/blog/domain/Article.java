@@ -3,6 +3,7 @@ package blog.domain;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ public class Article {
 
     private String content;
 
-    private Set<String> keyword;
+    private HashSet<String> keyword;
 
     private Date time;
 
@@ -29,7 +30,7 @@ public class Article {
     protected Article() {
     }
 
-    public Article(User author, String title, String content, Set<String> keyword, Date time, List<Comment> comments) {
+    public Article(User author, String title, String content, HashSet<String> keyword, Date time, List<Comment> comments) {
         this.author = author;
         this.title = title;
         this.content = content;
@@ -70,7 +71,7 @@ public class Article {
         return keyword;
     }
 
-    public void setKeyword(Set<String> keyword) {
+    public void setKeyword(HashSet<String> keyword) {
         this.keyword = keyword;
     }
 
