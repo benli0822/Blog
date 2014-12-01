@@ -10,6 +10,8 @@ A simple blog application write in Spring-boot Framework, Course Master E-Servic
 
 [Skel Doc](http://getskel.com/docs)
 
+[Thymeleaf + Spring](http://www.thymeleaf.org/doc/thymeleafspring.html#spring-based-template-resolution)
+
 ###Project Structure
 
 ```java
