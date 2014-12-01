@@ -1,5 +1,9 @@
 package blog.mvc;
 
+import blog.Application;
+import blog.service.repository.ArticleRepository;
+import org.springframework.context.annotation.Import;
+import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -7,10 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by JIN Benli on 17/11/14.
  */
 @Controller
+@Import(Application.class)
 public class HomeController {
 
+    private ArticleRepository articleRepository;
+
     @RequestMapping(value = "/home")
-    public String home() {
+    public String home (Model model) {
+    model.addAttribute("articles", articleRepository.findAll());
         return "view/home";
     }
 
