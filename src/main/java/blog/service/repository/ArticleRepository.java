@@ -1,6 +1,7 @@
 package blog.service.repository;
 
 import blog.domain.Article;
+import blog.domain.Category;
 import blog.domain.User;
 import org.springframework.data.repository.CrudRepository;
 
@@ -14,4 +15,6 @@ public interface ArticleRepository extends CrudRepository<Article, Long> {
     public List<Article> findArticleByAuthor(User author);
 
     public List<Article> findArticleByTime(Date time);
+
+    public List<Category> findArtiCategories(Category category);
 }
