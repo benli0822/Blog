@@ -3,17 +3,22 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout">
-<body>
+<body class="left-sidebar">
 
 <div layout:fragment="content"> <!-- //TODO ajouter l'assocation avec entity --> 
-    <div id="content" style="margin-left:20%">
+    <div id="content">
         <div class="inner">
         	<article class="box post post-excerpt">
+                <div class="info">
+                    <span class="date"><span class="month">Jul<span>y</span></span> <span class="day">15</span><span
+                    class="year">, 2014</span></span>
+                </div>
+
+
         		 <header>
                     <h2>Title of Article</h2>
-                    <h4>By author - Date</h4>
+                    <p>By author</p>
                 </header>
-
                 <p>
                     <strong>Hello!</strong> You're looking at <strong>Striped</strong>, a fully responsive HTML5 site
                     template designed by <a href="http://n33.co">AJ</a>
@@ -22,40 +27,46 @@
                     repositionable sidebar (left or right), and HTML5/CSS3 code designed for quick and easy
                     customization (see code comments for details).
                 </p>
-
-                <p>
-                    Striped is released for free under the <a href="http://html5up.net/license">Creative Commons
-                    Attribution license</a> so feel free to use it for personal projects
-                    or even commercial ones &ndash; just be sure to credit <a href="http://html5up.net">HTML5 UP</a> for
-                    the design. If you like what you see here, be sure to check out
-                    <a href="http://html5up.net">HTML5 UP</a> for more cool designs or follow me on <a
-                    href="http://twitter.com/n33co">Twitter</a> for new releases and updates.
-                </p>
-                <br />
                 <h3>Key words</h3>
-                <p>
-                Key Words, Key Words 1, Key Words 2
-                </p>
+                    <div class="12u$">
+                        <ul class="actions" id="keyWord">
+                            <li>Key Word 1</li>
+                            <li>Key Word 2</li>
+                            <li>Key Word 3</li>
+                            <li>Key Word 4</li>
+                            <li>Key Word 5</li>
+                            <li>Key Word 6</li>
+                        </ul>
+                    </div>
                 <h3>List of comments</h3>
-                    <h5>By Auhtor of comment - Date</h5>
-                    <p>
-                    Striped is released for free under the <a href="http://html5up.net/license">Creative Commons
-                    Attribution license</a> so feel free to use it for personal projects
-                    or even commercial ones &ndash; just be sure to credit <a href="http://html5up.net">HTML5 UP</a> for
-                    the design. If you like what you see here, be sure to check out
-                    <a href="http://html5up.net">HTML5 UP</a> for more cool designs or follow me on <a
-                    href="http://twitter.com/n33co">Twitter</a> for new releases and updates.
-                </p>
-                <h4>Create a comment</h4>
-                    <p>
-                    <form action="#" method="post">
-                    <label for="commentArticle">Comment of article :</label>
-                    <textarea name="commentArticle" id="commentArticle" placeholder="Comment of this article"></textarea>
+                    <header>
+                    <h4>By Auhtor 1 - 15 June</h4>
+                    </header>
+                    <p>Striped is released for free under the <a href="http://html5up.net/license">Creative Commons
+                    Attribution license</a> so feel free to use it for personal projects</p>
+                    
+                    <header>
+                    <h4>By Auhtor 2 - 16 June</h4>
+                    </header>
+                    <p>Striped is released for free under the <a href="http://html5up.net/license">Creative Commons
+                    Attribution license</a> so feel free to use it for personal projects</p>
 
-                    <input type="submit" value="Post a comment"/>
-                    </form>
-                    </p>
-                 
+                <h3>Create a comment</h3>
+                <form action="#" method="post" th:object="${comment}" th:action="@{/post}">  <!-- //TODO ajouter l'assocation avec entity -->
+                <div class="row uniform">
+                    <div class="12u$">
+                        <textarea name="contentComment" id="contentComment" rows="3"
+                        placeholder="Content of this comment"></textarea>
+                    </div>
+                    <!-- Break -->
+                    <div class="12u$">
+                        <ul class="actions">
+                            <li><input type="submit" value="Create comment" /></li>
+                            <li><input type="reset" value="Reset" class="alt" /></li>
+                        </ul>
+                    </div>
+                </div>
+                </form>
 			</article>
 		</div>
 	</div>
