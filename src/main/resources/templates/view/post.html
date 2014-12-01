@@ -22,7 +22,7 @@
 							class="year">, 2014</span></span>
 				</div>
 				<h2>Create of article</h2>
-						<form action="#" method="post">  <!-- //TODO ajouter l'assocation avec entity -->
+						<form action="#" method="post" th:object="${article}" th:action="@{/post}">  <!-- //TODO ajouter l'assocation avec entity -->
 
 							<div class="row uniform">
 								<div class="6u 12u$(4)">

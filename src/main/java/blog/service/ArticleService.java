@@ -1,7 +1,6 @@
 package blog.service;
 
 import blog.domain.Article;
-import blog.domain.User;
 
 import java.util.Date;
 
@@ -16,8 +15,8 @@ public interface ArticleService {
 
     /* Article CRUD */
 
-    //TODO maybe should add comments
-    public Article createArticle(Article article, User user);
+    //TODO maybe should add comments and users
+    public Article createArticle(Article article);
 
     public Article readArticle(long aid);
 
