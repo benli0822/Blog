@@ -23,7 +23,10 @@
     <!-- Content -->
     <div id="content">
         <div class="inner">
-
+                                    <tr th:each="article : ${articles}">
+                                    <td><a href="#" th:text="${article.title}">Title ...</a></td>
+                                    <td th:text="${article.content}">Text ...</td>
+                                    </tr>
             <!-- Post -->
             <article class="box post post-excerpt">
                 <header>
