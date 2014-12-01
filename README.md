@@ -60,3 +60,14 @@ A simple blog application write in Spring-boot Framework, Course Master E-Servic
 5. Login and register (basic)
 
 
+Login with spring-boot module
+Login with Facebook or Twitter
+
+Save in real time the blog, post twitter in the application
+
+Email sub
+
+Back-end monitoring
+
+
+
