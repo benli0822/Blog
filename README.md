@@ -6,7 +6,9 @@ A simple blog application write in Spring-boot Framework, Course Master E-Servic
 
 [Spring-boot-samples](https://github.com/spring-projects/spring-boot/tree/1.1.x/spring-boot-samples)
 
-[Bootstrap](http://getbootstrap.com/)
+[Skel Baseline](http://getskel.com/downloads/skel-baseline/#elements)
+
+[Skel Doc](http://getskel.com/docs)
 
 ###Project Structure
 
