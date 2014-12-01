@@ -3,6 +3,8 @@ package blog.service;
 import blog.domain.Article;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by JIN Benli on 01/12/14.
@@ -10,7 +12,7 @@ import java.util.Date;
 public interface ArticleService {
 
     /* Find an article */
-    public Article findArticleByUserAndDate(long uid, Date date);
+    public List<Article> findArticleByUserAndDate(long uid, Date date);
 
 
     /* Article CRUD */
@@ -20,8 +22,8 @@ public interface ArticleService {
 
     public Article readArticle(long aid);
 
-    public Article updateArticle(long aid);
+    public Article updateArticle(long aid, HashMap<String, String> values);
 
-    public boolean removeArticle(long aid);
+    public void removeArticle(long aid);
 
 }

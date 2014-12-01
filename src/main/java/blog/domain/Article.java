@@ -6,7 +6,6 @@ import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -29,12 +28,12 @@ public class Article {
     private Date time;
 
     @OneToMany(fetch=FetchType.LAZY)
-    private List<Comment> comments;
+    private Set<Comment> comments;
 
     protected Article() {
     }
 
-    public Article(User author, String title, String content, HashSet<String> keyword, Date time, List<Comment> comments) {
+    public Article(User author, String title, String content, HashSet<String> keyword, Date time, Set<Comment> comments) {
         this.author = author;
         this.title = title;
         this.content = content;
@@ -85,6 +84,14 @@ public class Article {
 
     public void removeKeyword(String keyword) {
         this.keyword.remove(keyword);
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     @Override
