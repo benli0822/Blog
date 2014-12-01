@@ -27,11 +27,11 @@
 							<div class="row uniform">
 								<div class="6u 12u$(4)">
 									<label for="authorArticle">Author name :</label>
-									<input type="text" name="authorArticle" id="authorArticle" placeholder="Author of article"/>
+									<input type="text" name="authorArticle" id="authorArticle" placeholder="Author of article" th:field="*{author}"/>
 								</div>
 								<div class="6u$ 12u$(4)">
 									<label for="titleArticle">Title :</label>
-									<input type="text" name="titleArticle" id="titleArticle" placeholder="Title of article"/>
+									<input type="text" name="titleArticle" id="titleArticle" placeholder="Title of article" th:field="*{title}"/>
 								</div>
 
 								<div class="6u$ 12u$(4)">
@@ -76,12 +76,12 @@
 								<div class="12u$">
 									<label for="contentArticle">Content of article :</label>
 									<textarea name="contentArticle" id="contentArticle" rows="6"
-											  placeholder="Content of this article"></textarea>
+											  placeholder="Content of this article" th:field="*{content}"></textarea>
 								</div>
 								<!-- Break -->
 								<div class="12u$">
 									<ul class="actions">
-										<li><input type="submit" value="Create article" /></li>
+										<li><input type="submit" name="save" value="Create article" /></li>
 										<li><input type="reset" value="Reset" class="alt" /></li>
 									</ul>
 								</div>

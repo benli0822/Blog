@@ -2,6 +2,8 @@ package blog.mvc;
 
 import blog.Application;
 import blog.domain.Article;
+import blog.service.ArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Import(Application.class)
 public class BlogController {
 
-//    @Autowired
-//    private ArticleService articleService;
+    @Autowired
+    private ArticleService articleService;
 
     @RequestMapping(value = "post")
-    public String post() {
+    public String post(final Article article) {
         return "view/post";
     }
 
@@ -29,7 +31,7 @@ public class BlogController {
         if (bindingResult.hasErrors()) {
             return "view/post";
         }
-//        articleService.createArticle(article);
+        articleService.createArticle(article);
         model.clear();
         return "redirect:/view/post";
     }

@@ -32,7 +32,7 @@ public class Article {
     private Set<Comment> comments;
 
 
-    protected Article() {
+    public Article() {
     }
 
     public Article(User author, String title, String content, HashSet<String> keyword, Date time, Set<Comment> comments) {
