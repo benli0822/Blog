@@ -49,6 +49,7 @@ A simple blog application write in Spring-boot Framework, Course Master E-Servic
 					login.html
 					register.html
 					setting.html
+```java
 
 ###Expected Functions
 
