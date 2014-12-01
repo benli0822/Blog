@@ -13,7 +13,7 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String author;
+    private User author;
 
     private String title;
 
@@ -29,22 +29,24 @@ public class Article {
     protected Article() {
     }
 
-    public Article(String author, String title, String content, Set<String> keyword) {
+    public Article(User author, String title, String content, Set<String> keyword, Date time, List<Comment> comments) {
         this.author = author;
         this.title = title;
         this.content = content;
         this.keyword = keyword;
+        this.time = time;
+        this.comments = comments;
     }
 
     public long getId() {
         return id;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 
