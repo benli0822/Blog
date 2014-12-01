@@ -1,10 +1,11 @@
 package blog.domain;
 
 
+import org.hibernate.annotations.NaturalId;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,27 +15,30 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @OneToOne(optional = false)
+    @NaturalId
     private User author;
 
     private String title;
 
     private String content;
 
-    private HashSet<String> keyword;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    private Set<Category> categories = new HashSet<Category>();
 
     private Date time;
 
     @OneToMany(fetch=FetchType.LAZY)
-    private List<Comment> comments;
+    private Set<Comment> comments;
+
 
     protected Article() {
     }
 
-    public Article(User author, String title, String content, HashSet<String> keyword, Date time, List<Comment> comments) {
+    public Article(User author, String title, String content, HashSet<String> keyword, Date time, Set<Comment> comments) {
         this.author = author;
         this.title = title;
         this.content = content;
-        this.keyword = keyword;
         this.time = time;
         this.comments = comments;
     }
@@ -67,20 +71,33 @@ public class Article {
         this.content = content;
     }
 
-    public Set<String> getKeyword() {
-        return keyword;
+
+    public boolean add(Category category) {
+        return categories.add(category);
     }
 
-    public void setKeyword(HashSet<String> keyword) {
-        this.keyword = keyword;
+    public boolean remove(Object o) {
+        return categories.remove(o);
     }
 
-    public void addKeyword(String keyword) {
-        this.keyword.add(keyword);
+    public void clear() {
+        categories.clear();
     }
 
-    public void removeKeyword(String keyword) {
-        this.keyword.remove(keyword);
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     @Override

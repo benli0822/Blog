@@ -106,6 +106,10 @@
 		margin-bottom: 1em;
 	}
 
+	
+		.box.post.post-excerpt > p {
+		font-size: 22px;
+		}
 	/* Table */
 
 		table
@@ -445,6 +449,39 @@ input[type="radio"] + label:before {
 				}
 
 	/* List */
+		header + p {
+    		margin-top: -30px;
+		}
+		#keyWord  li {
+			border-radius:5px;
+			padding:1%;
+			font-weight:bold;
+			margin-right:2%;
+		}
+
+		#keyWord  li:nth-child(6n+0){
+			background:red;
+		}
+
+		#keyWord  li:nth-child(6n+1){
+			background:blue;
+		}
+
+		#keyWord  li:nth-child(6n+2){
+			background: yellow;
+		}
+
+		#keyWord  li:nth-child(6n+3){
+			background:green;
+		}
+
+		#keyWord  li:nth-child(6n+4){
+			background:#ff8888;
+		}
+
+		#keyWord  li:nth-child(6n+5){
+			background:#2cbad4;
+		}
 
 		ul.default
 		{
