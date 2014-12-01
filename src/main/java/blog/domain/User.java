@@ -29,7 +29,7 @@ public class User {
 
     private String twitter;
 
-    protected User() {
+    public User() {
     }
 
     public User(String username, String password, String firstname, String lastname, String email, String facebook, String twitter) {

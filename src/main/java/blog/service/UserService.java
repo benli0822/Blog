@@ -17,7 +17,7 @@ public interface UserService {
     //TODO maybe not necessary
     public User readUser(long uid);
 
-    public User updateUser(HashMap<String, String> values);
+    public User updateUser(long uid, HashMap<String, String> values);
 
     public boolean deleteUser(long uid);
 }

@@ -21,7 +21,7 @@ import java.util.List;
 public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
-    public ArticleRepository articleRepository;
+    private ArticleRepository articleRepository;
 
     @Autowired
     public UserRepository userRepository;
