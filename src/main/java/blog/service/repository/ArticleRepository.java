@@ -16,5 +16,6 @@ public interface ArticleRepository extends CrudRepository<Article, Long> {
 
     public List<Article> findArticleByTime(Date time);
 
-    public List<Category> findArtiCategories(Category category);
+    //TODO should check
+    public List<Article> findArticleByCategories(Category category);
 }
