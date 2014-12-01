@@ -5,17 +5,21 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout">
 <!--
     Note: Set the body element's class to "left-sidebar" to position the sidebar on the left.
     Set it to "right-sidebar" to, you guessed it, position it on the right.
 -->
+
+<div layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/scrollToTop.css}" />
+    <link rel="stylesheet" th:href="@{/css/easing.css}" />
+</div>
+
 <body class="left-sidebar">
 <div layout:fragment="content">
-<!-- Wrapper -->
-<div id="wrapper">
-
     <!-- Content -->
     <div id="content">
         <div class="inner">
@@ -53,7 +57,7 @@
                         <li><a href="#" class="icon fa-facebook">128</a></li>
                     </ul>
                 </div>
-                <a href="#" class="image featured"><img src="../../static/images/pic01.jpg" alt=""/></a>
+                <a href="#" class="image featured"><img src="../static/images/pic01.jpg" th:src="@{/images/pic01.jpg}" alt=""/></a>
 
                 <p>
                     <strong>Hello!</strong> You're looking at <strong>Striped</strong>, a fully responsive HTML5 site
@@ -91,7 +95,7 @@
                         <li><a href="#" class="icon fa-facebook">128</a></li>
                     </ul>
                 </div>
-                <a href="#" class="image featured"><img src="../../static/images/pic02.jpg" alt=""/></a>
+                <a href="#" class="image featured"><img src="../static/images/pic02.jpg" th:src="@{/images/pic02.jpg}" alt=""/></a>
 
                 <p>
                     Quisque vel sapien sit amet tellus elementum ultricies. Nunc vel orci turpis. Donec id malesuada
@@ -120,10 +124,16 @@
 
         </div>
     </div>
-
-
-
 </div>
+
+<div layout:fragment="script">
+    <script th:src="@{/js/jquery-scrollToTop.js}"></script>
+    <script th:src="@{/js/jquery-scrollToTop.js}"></script>
+    <script type="text/javascript">
+        $(document).ready(function($) {
+            $('body').scrollToTop({skin: 'cycle'});
+        });
+    </script>
 </div>
 </body>
 </html>

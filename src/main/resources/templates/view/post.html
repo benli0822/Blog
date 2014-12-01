@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout">
-<body>
+<body class="left-sidebar">
 
 <div layout:fragment="content">
-asdasdas
+    <div id="content">
+        <div class="inner">
+        	<article class="box post post-excerpt">
+				<!-- <div class="row">
+					<div class="span2">
+					</div>
+					<div class="span8"> -->
+
+						<form action="#" method="post" style="margin-left:20%">  <!-- //TODO ajouter l'assocation avec entity --> 
+							<h2>Create of article</h2>
+					        <p>
+					        	<input type="checkbox" id="PostFacebook" >Post of Facebook</input>
+					        	<input type="checkbox" id="PostTwitter">Post of Twitter</input>
+					        <br /> <br />
+				            <label for="authorArticle">Author name :</label>
+				            <input type="text" name="authorArticle" id="authorArticle" placeholder="Author of article"/>
+
+				            <label for="titleArticle">Title :</label>
+				            <input type="text" name="titleArticle" id="titleArticle" placeholder="Title of article"/>
+
+				            <label for="contentArticle">Content of article :</label>
+				            <textarea name="contentArticle" id="contentArticle" placeholder="Content of this article"></textarea>
+
+				            <label for="keyWords">Key words of article :</label>
+				            <input type="text" name="keyWords" id="keyWords" placeholder="KeyWords"/>
+
+				            <br /><br />
+				            <input type="submit" value="Create article"/>
+				            </p>
+				          </form>
+					<!-- </div>
+				</div> -->
+			</article>
+		</div>
+	</div>
 </div>
 </body>
 </html>

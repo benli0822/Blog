@@ -50,5 +50,12 @@ A simple blog application write in Spring-boot Framework, Course Master E-Servic
 					register.html
 					setting.html
 
+###Expected Functions
+
+1. Create a blog and list it at the home page (basic)
+2. Create comments on a blog (basic) comments on comments (advanced)
+3. Give tags to a blog, key words (advanced)
+4. Connection with Facebook, Twitter, like (basic), login with account (basic), post tweet or news (advanced)
+5. Login and register (basic)
 
 
