@@ -18,12 +18,16 @@ public class Article {
 
     private String title;
 
+//    private String subtitle;
+
+    private Date time;
+
     private String content;
+
+//    private Set<String> images;
 
     @ManyToMany(cascade = {CascadeType.ALL})
     private Set<Category> categories = new HashSet<Category>();
-
-    private Date time;
 
     @OneToMany(fetch=FetchType.LAZY)
     private Set<Comment> comments;
