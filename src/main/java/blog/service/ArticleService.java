@@ -26,4 +26,10 @@ public interface ArticleService {
 
     public void removeArticle(long aid);
 
+    /**
+     * get the article list and sort it by time
+     * @return article list sorted by time
+     */
+    public List<Article> listArticleOrderByTime();
+
 }

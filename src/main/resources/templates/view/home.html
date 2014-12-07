@@ -23,10 +23,7 @@
     <!-- Content -->
     <div id="content">
         <div class="inner">
-            <tr th:each="article : ${articles}">
-                <td><a href="#" th:text="${article.title}">Title ...</a></td>
-                <td th:text="${article.content}">Text ...</td>
-            </tr>
+            
             <!-- Post -->
             <article class="box post post-excerpt">
                 <header>
@@ -35,9 +32,9 @@
                         if they get too long. You can also remove the <p> entirely if you don't
                         need a subtitle.
                     -->
-                    <h2><a href="#">Welcome to Striped</a></h2>
+                    <h2><a>Welcome to MyBlog</a></h2>
 
-                    <p>A free, fully responsive HTML5 site template by HTML5 UP</p>
+                    <p>A new way to show your dayily life</p>
                 </header>
                 <div class="info">
                     <!--
@@ -83,11 +80,13 @@
             </article>
 
             <!-- Post -->
+
+            <tr th:each="article : ${articles}">
             <article class="box post post-excerpt">
                 <header>
-                    <h2><a href="#">Lorem ipsum dolor sit amet</a></h2>
+                    <h2><a href="#" th:text="${article.title}">Lorem ipsum dolor sit amet</a></h2>
 
-                    <p>Feugiat interdum sed commodo ipsum consequat dolor nullam metus</p>
+                    <p th:text="${article.author.username}">Feugiat interdum sed commodo ipsum consequat dolor nullam metus</p>
                 </header>
                 <div class="info">
                     <span class="date"><span class="month">Jul<span>y</span></span> <span class="day">8</span><span
@@ -99,10 +98,8 @@
                         <li><a href="#" class="icon fa-facebook">128</a></li>
                     </ul>
                 </div>
-                <a href="#" class="image featured"><img src="../static/images/pic02.jpg" th:src="@{/images/pic02.jpg}"
-                                                        alt=""/></a>
 
-                <p>
+                <p th:text="${article.content}">
                     Quisque vel sapien sit amet tellus elementum ultricies. Nunc vel orci turpis. Donec id malesuada
                     metus.
                     Nunc nulla velit, fermentum quis interdum quis, tate etiam commodo lorem ipsum dolor sit amet
@@ -112,6 +109,9 @@
                     Nunc nulla velit, fermentum quis interdum quis, convallis eu sapien. Integer sed ipsum ante.
                 </p>
             </article>
+            </tr>
+
+
 
             <!-- Pagination -->
             <div class="pagination">

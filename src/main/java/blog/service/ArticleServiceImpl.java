@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by JIN Benli on 01/12/14.
@@ -71,5 +69,22 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public void removeArticle(long aid) {
         articleRepository.delete(aid);
+    }
+
+
+    @Override
+    public List<Article> listArticleOrderByTime() {
+        List<Article> articles = (List<Article>)articleRepository.findAll();
+
+        Collections.sort(articles, new Comparator<Article>() {
+            @Override
+            public int compare(Article o1, Article o2) {
+                if (o1.getTime() == null || o2.getTime() == null)
+                    return 0;
+                return o1.getTime().compareTo(o2.getTime());
+            }
+        });
+
+        return articles;
     }
 }
