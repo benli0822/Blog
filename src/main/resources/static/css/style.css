@@ -460,19 +460,19 @@ input[type="radio"] + label:before {
 		}
 
 		#keyWord  li:nth-child(6n+0){
-			background:red;
+			background:#F59090;
 		}
 
 		#keyWord  li:nth-child(6n+1){
-			background:blue;
+			background:#8F8FE6;
 		}
 
 		#keyWord  li:nth-child(6n+2){
-			background: yellow;
+			background: #98E68F;
 		}
 
 		#keyWord  li:nth-child(6n+3){
-			background:green;
+			background:#ECEC69;
 		}
 
 		#keyWord  li:nth-child(6n+4){

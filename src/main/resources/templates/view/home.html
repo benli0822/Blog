@@ -30,7 +30,7 @@
             <tr th:each="article : ${articles}">
                 <article class="box post post-excerpt">
                     <header>
-                        <h2><a href="#" th:text="${article.title}">Lorem ipsum dolor sit amet</a></h2>
+                        <h2><a th:href="@{article(id=${article.id})}" th:text="${article.title}">Lorem ipsum dolor sit amet</a></h2>
 
                         <p th:text="${article.author.username}">Feugiat interdum sed commodo ipsum consequat dolor
                             nullam metus</p>
@@ -55,6 +55,11 @@
                         metus.
                         Nunc nulla velit, fermentum quis interdum quis, convallis eu sapien. Integer sed ipsum ante.
                     </p>
+                    <div class="12u$">
+                        <ul class="actions" id="keyWord">
+                            <li th:text="${category.description}" th:each="category : ${article.categories}">Key Word 1</li>
+                        </ul>
+                    </div>
                 </article>
             </tr>
 

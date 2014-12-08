@@ -5,71 +5,81 @@
       layout:decorator="layout">
 <body class="left-sidebar">
 
-<div layout:fragment="content"> <!-- //TODO ajouter l'assocation avec entity --> 
+<div layout:fragment="content"> <!-- //TODO ajouter l'assocation avec entity -->
     <div id="content">
         <div class="inner">
-        	<article class="box post post-excerpt">
+            <article class="box post post-excerpt">
+                <header>
+                    <h2><a th:href="@{article(id=${article.id})}" th:text="${article.title}">Lorem ipsum dolor sit
+                        amet</a></h2>
+
+                    <p th:text="${article.author.username}">Feugiat interdum sed commodo ipsum consequat dolor
+                        nullam metus</p>
+                </header>
                 <div class="info">
-                    <span class="date"><span class="month">Jul<span>y</span></span> <span class="day">15</span><span
-                    class="year">, 2014</span></span>
+                    <span class="date"><span class="month"
+                                             th:text="${article.time} ? ${#dates.format(article.time, 'MMM')}">Jul<span>y</span></span> <span
+                            class="day" th:text="${article.time} ? ${#dates.format(article.time, 'dd')}">8</span><span
+                            class="year">, 2014</span></span>
+                    <ul class="stats">
+                        <li><a href="#" class="icon fa-comment">16</a></li>
+                        <li><a href="#" class="icon fa-heart">32</a></li>
+                        <li><a href="#" class="icon fa-twitter">64</a></li>
+                        <li><a href="#" class="icon fa-facebook">128</a></li>
+                    </ul>
                 </div>
 
-
-        		 <header>
-                    <h2>Title of Article</h2>
-                    <p>By author</p>
-                </header>
-                <p>
-                    <strong>Hello!</strong> You're looking at <strong>Striped</strong>, a fully responsive HTML5 site
-                    template designed by <a href="http://n33.co">AJ</a>
-                    for <a href="http://html5up.net">HTML5 UP</a> It features a clean, minimalistic design, styling for
-                    all basic page elements (including blockquotes, tables and lists), a
-                    repositionable sidebar (left or right), and HTML5/CSS3 code designed for quick and easy
-                    customization (see code comments for details).
+                <p th:text="${article.content}">
+                    Quisque vel sapien sit amet tellus elementum ultricies. Nunc vel orci turpis. Donec id malesuada
+                    metus.
+                    Nunc nulla velit, fermentum quis interdum quis, tate etiam commodo lorem ipsum dolor sit amet
+                    dolore.
+                    Quisque vel sapien sit amet tellus elementum ultricies. Nunc vel orci turpis. Donec id malesuada
+                    metus.
+                    Nunc nulla velit, fermentum quis interdum quis, convallis eu sapien. Integer sed ipsum ante.
                 </p>
+
                 <h3>Key words</h3>
-                    <div class="12u$">
-                        <ul class="actions" id="keyWord">
-                            <li>Key Word 1</li>
-                            <li>Key Word 2</li>
-                            <li>Key Word 3</li>
-                            <li>Key Word 4</li>
-                            <li>Key Word 5</li>
-                            <li>Key Word 6</li>
-                        </ul>
-                    </div>
+
+                <div class="12u$">
+                    <ul class="actions" id="keyWord">
+                        <li th:text="${category.description}" th:each="category : ${article.categories}">Key Word 1</li>
+                    </ul>
+                </div>
                 <h3>List of comments</h3>
-                    <header>
+                <header>
                     <h4>By Auhtor 1 - 15 June</h4>
-                    </header>
-                    <p>Striped is released for free under the <a href="http://html5up.net/license">Creative Commons
+                </header>
+                <p>Striped is released for free under the <a href="http://html5up.net/license">Creative Commons
                     Attribution license</a> so feel free to use it for personal projects</p>
-                    
-                    <header>
+
+                <header>
                     <h4>By Auhtor 2 - 16 June</h4>
-                    </header>
-                    <p>Striped is released for free under the <a href="http://html5up.net/license">Creative Commons
+                </header>
+                <p>Striped is released for free under the <a href="http://html5up.net/license">Creative Commons
                     Attribution license</a> so feel free to use it for personal projects</p>
 
                 <h3>Create a comment</h3>
-                <form action="#" method="post" th:object="${comment}" th:action="@{/post}">  <!-- //TODO ajouter l'assocation avec entity -->
-                <div class="row uniform">
-                    <div class="12u$">
-                        <textarea name="contentComment" id="contentComment" rows="3"
-                        placeholder="Content of this comment"></textarea>
+
+                <form action="#" method="post" th:object="${comment}" th:action="@{/post}">
+                    <!-- //TODO ajouter l'assocation avec entity -->
+                    <div class="row uniform">
+                        <div class="12u$">
+                            <textarea name="contentComment" id="contentComment" rows="3"
+                                      placeholder="Content of this comment"></textarea>
+                        </div>
+                        <!-- Break -->
+                        <div class="12u$">
+                            <ul class="actions">
+                                <li><input type="submit" value="Create comment"/></li>
+                                <li><input type="reset" value="Reset" class="alt"/></li>
+                            </ul>
+                        </div>
                     </div>
-                    <!-- Break -->
-                    <div class="12u$">
-                        <ul class="actions">
-                            <li><input type="submit" value="Create comment" /></li>
-                            <li><input type="reset" value="Reset" class="alt" /></li>
-                        </ul>
-                    </div>
-                </div>
                 </form>
-			</article>
-		</div>
-	</div>
+            </article>
+        </div>
+    </div>
 </div>
 </body>
 </html>

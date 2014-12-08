@@ -4,7 +4,12 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout">
 <head>
-        <script type="text/javascript" th:src="@{js/tinymce/tinymce.min.js}" ></script>
+    <script type="text/javascript" th:src="@{js/tinymce/tinymce.min.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript"
+            charset="utf-8"></script>
+    <link th:href="@{css/jquery.tagit.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{css/tagit.ui-zendesk.css}" rel="stylesheet" type="text/css"/>
+    <script th:src="@{js/tag-it.js}" type="text/javascript" charset="utf-8"></script>
 </head>
 <body class="left-sidebar">
 
@@ -47,19 +52,8 @@
 
                         <div class="6u$ 12u$(4)">
                             <label for="keyWords">Key words of article :</label>
-                            <input type="text" name="keyWords" id="keyWords" placeholder="KeyWords"/>
-                        </div>
-                        <!-- Break -->
-                        <div class="12u$">
-                            <div class="select-wrapper">
-                                <select name="category" id="category">
-                                    <option value="">- Category -</option>
-                                    <option value="1">Manufacturing</option>
-                                    <option value="1">Shipping</option>
-                                    <option value="1">Administration</option>
-                                    <option value="1">Human Resources</option>
-                                </select>
-                            </div>
+                            <input name="keyWords" id="keyWords" hidden="true"/>
+                            <ul name="myTags" id="myTags"></ul>
                         </div>
                         <!-- Break -->
                         <div class="4u 12u$(3)">
@@ -86,20 +80,18 @@
                         <!-- Break -->
                         <div class="12u$">
                             <label for="contentArticle">Content of article :</label>
-                            <form method="post" action="somepage">
-                                <textarea name="contentArticle" id="contentArticle" placeholder="Content of this article" th:field="*{article.content}"></textarea>
-                            </form>
+                            <textarea name="contentArticle" id="contentArticle"
+                                      placeholder="Content of this article"
+                                      th:field="*{article.content}"></textarea>
                         </div>
                         <!-- Break -->
                         <div class="12u$">
                             <ul class="actions">
-                                <li><input type="submit" name="save" value="Create article"/></li>
+                                <input type="submit" name="save" value="Create article"/>
                                 <li><input type="reset" value="Reset" class="alt"/></li>
                             </ul>
                         </div>
                     </div>
-
-
                 </form>
                 <!-- </div>
             </div> -->
@@ -109,23 +101,35 @@
 </div>
 <div layout:fragment="script">
     <script type="text/javascript">
-        tinymce.init({
-            selector: "textarea",
-            theme: "modern",
-            plugins: [
-                "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-                "searchreplace wordcount visualblocks visualchars code fullscreen",
-                "insertdatetime media nonbreaking save table contextmenu directionality",
-                "emoticons template paste textcolor colorpicker textpattern"
-            ],
-            height : 500,
-            toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-            toolbar2: "print preview media | forecolor backcolor emoticons",
-            image_advtab: true,
-            templates: [
-                {title: 'Test template 1', content: 'Test 1'},
-                {title: 'Test template 2', content: 'Test 2'}
-            ]
+        $(function () {
+            tinymce.init({
+                selector: "textarea",
+                theme: "modern",
+                plugins: [
+                    "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen",
+                    "insertdatetime media nonbreaking save table contextmenu directionality",
+                    "emoticons template paste textcolor colorpicker textpattern"
+                ],
+                height: 500,
+                toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+                toolbar2: "print preview media | forecolor backcolor emoticons",
+                image_advtab: true,
+                templates: [
+                    {title: 'Test template 1', content: 'Test 1'},
+                    {title: 'Test template 2', content: 'Test 2'}
+                ]
+            });
+
+            var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
+
+
+            $('#myTags').tagit({
+                availableTags: sampleTags,
+                // This will make Tag-it submit a single form value, as a comma-delimited field.
+                singleField: true,
+                singleFieldNode: $('#keyWords')
+            });
         });
     </script>
 </div>

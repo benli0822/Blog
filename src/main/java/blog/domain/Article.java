@@ -31,7 +31,7 @@ public class Article {
 
 
     public Article() {
-        time = new Date();
+        this.time = new Date();
     }
 
     public Article(User author, String title, Date time, String content, Set<String> images, Set<Category> categories, Set<Comment> comments) {

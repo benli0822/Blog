@@ -19,6 +19,8 @@ public class Category {
     @ManyToMany(mappedBy = "categories")
     private Set<Article> articles = new HashSet<Article>();
 
+    public Category() {}
+
     public Category(String description) {
         this.description = description;
     }
@@ -45,5 +47,15 @@ public class Category {
 
     public void setArticles(Set<Article> articles) {
         this.articles = articles;
+    }
+
+    public void addArticle(Article article) {
+        this.articles.add(article);
+    }
+
+    public void removeArticle(Object o) {
+        if(o instanceof Article) {
+            this.articles.remove(o);
+        }
     }
 }
