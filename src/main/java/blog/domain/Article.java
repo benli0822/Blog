@@ -2,7 +2,10 @@ package blog.domain;
 
 
 import javax.persistence.*;
-import java.util.*;
+import javax.validation.constraints.Size;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Article {
@@ -14,10 +17,12 @@ public class Article {
     @OneToOne
     private User author;
 
+    @Size(max = 300)
     private String title;
 
     private Date time;
 
+    @Size(max = 2000000)
     private String content;
 
     @ElementCollection

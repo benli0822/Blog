@@ -29,7 +29,7 @@
                     </ul>
                 </div>
 
-                <p th:text="${article.content}">
+                <p th:utext="${article.content}">
                     Quisque vel sapien sit amet tellus elementum ultricies. Nunc vel orci turpis. Donec id malesuada
                     metus.
                     Nunc nulla velit, fermentum quis interdum quis, tate etiam commodo lorem ipsum dolor sit amet
@@ -39,6 +39,7 @@
                     Nunc nulla velit, fermentum quis interdum quis, convallis eu sapien. Integer sed ipsum ante.
                 </p>
 
+                <hr/>
                 <h3>Key words</h3>
 
                 <div class="12u$">
@@ -46,6 +47,7 @@
                         <li th:text="${category.description}" th:each="category : ${article.categories}">Key Word 1</li>
                     </ul>
                 </div>
+                <hr/>
                 <h3>List of comments</h3>
                 <header>
                     <h4>By Auhtor 1 - 15 June</h4>

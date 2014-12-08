@@ -4,9 +4,12 @@ import blog.domain.Article;
 import blog.domain.User;
 import blog.service.repository.ArticleRepository;
 import blog.service.repository.UserRepository;
+import org.h2.server.web.WebServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -51,6 +54,14 @@ public class Application {
 
         userRepository.save(admin);
 
+    }
+
+    @Bean
+    public ServletRegistrationBean h2servletRegistration() {
+        ServletRegistrationBean registration = new ServletRegistrationBean(
+                new WebServlet());
+        registration.addUrlMappings("/console/*");
+        return registration;
     }
 
 }
