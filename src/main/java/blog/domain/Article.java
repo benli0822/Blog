@@ -32,6 +32,7 @@ public class Article {
 
 
     public Article() {
+        time = new Date();
     }
 
     public Article(User author, String title, String content, HashSet<String> keyword, Date time, Set<Comment> comments) {
