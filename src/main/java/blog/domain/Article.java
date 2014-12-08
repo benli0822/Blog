@@ -37,7 +37,7 @@ public class Article {
     public Article(User author, String title, Date time, String content, Set<String> images, Set<Category> categories, Set<Comment> comments) {
         this.author = author;
         this.title = title;
-        this.time = time;
+        this.time = new Date();
         this.content = content;
         this.images = images;
         this.categories = categories;
