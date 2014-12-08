@@ -18,8 +18,6 @@ public class Article {
 
     private String title;
 
-//    private String subtitle;
-
     private Date time;
 
     private String content;
