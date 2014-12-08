@@ -2,9 +2,7 @@ package blog.domain;
 
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Article {
@@ -22,23 +20,26 @@ public class Article {
 
     private String content;
 
-//    private Set<String> images;
+    @ElementCollection
+    private Set<String> images = new HashSet<String>();
 
     @ManyToMany(cascade = {CascadeType.ALL})
     private Set<Category> categories = new HashSet<Category>();
 
     @OneToMany(fetch=FetchType.LAZY)
-    private Set<Comment> comments;
+    private Set<Comment> comments = new HashSet<Comment>();
 
 
     public Article() {
     }
 
-    public Article(User author, String title, String content, HashSet<String> keyword, Date time, Set<Comment> comments) {
+    public Article(User author, String title, Date time, String content, Set<String> images, Set<Category> categories, Set<Comment> comments) {
         this.author = author;
         this.title = title;
-        this.content = content;
         this.time = time;
+        this.content = content;
+        this.images = images;
+        this.categories = categories;
         this.comments = comments;
     }
 

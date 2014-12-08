@@ -10,8 +10,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Date;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by JIN Benli on 17/11/14.
@@ -38,8 +37,10 @@ public class HomeController {
         return "view/home";
     }
 
-    @RequestMapping(value = "/simpleArticle")
-    public String simpelArticle() {
+    @RequestMapping(value = "/article")
+    public String simpelArticle(@RequestParam(value = "id", required = true) int aid, Model model) {
+        Article article = articleRepository.findOne(Long.valueOf(aid));
+        model.addAttribute("article", article);
         return "view/simpleArticle";
     }
 
