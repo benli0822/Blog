@@ -10,13 +10,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpServletRequest;
+import javax.websocket.server.PathParam;
 import java.util.Date;
 import java.util.List;
 
@@ -58,10 +56,14 @@ public class ArticleRestController {
         log.info(articleRepository.count());
         log.info("get a article: " + title + "contenu : " + content);
 
-        //TODO add a reponse if the article is added to the DB
-        return "redirect:/view/home";
+
+        return null;
     }
 
+    /**
+     * get all article
+     * @return get all articles
+     */
     @RequestMapping(value = "/api/getAllArticles", method = RequestMethod.GET)
     public
     @ResponseBody
@@ -69,11 +71,27 @@ public class ArticleRestController {
         return (List<Article>) articleRepository.findAll();
     }
 
+    /**
+     * post a article by
+     * @return
+     */
     @RequestMapping(value = "/api/restPostArticle", method = RequestMethod.GET)
     public
     @ResponseBody
     List<Article> postResult() {
         return (List<Article>) articleRepository.findAll();
+    }
+
+    /**
+     * get article by id
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/api/getArticle/{id}", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Article getArticleById(@PathVariable long id) {
+        return articleRepository.findOne(id);
     }
 
 }
