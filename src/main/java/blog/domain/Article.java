@@ -22,6 +22,8 @@ public class Article {
 
     private Date time;
 
+    private String username;
+
     @Size(max = 2000000)
     private String content;
 
@@ -104,6 +106,14 @@ public class Article {
 
     public void setTime(Date time) {
         this.time = time;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
