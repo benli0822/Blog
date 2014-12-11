@@ -42,8 +42,8 @@ public class BlogController {
     @RequestMapping(value = "post")
     public String post(final Article article, Model model, HttpSession session) {
         log.info("[BlogController: post], listing post form");
-        List<User> adminList = userRepository.findUserByUsername("admin");
-        User admin = adminList.get(0);
+        User admin  = userRepository.findUserByUsername("admin");
+
         session.setAttribute("admin", admin);
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("categories", categoryRepository.findAll());
