@@ -3,14 +3,22 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout">
+<head>
+    <script type="text/javascript" th:src="@{js/tinymce/tinymce.min.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript"
+            charset="utf-8"></script>
+    <link th:href="@{css/jquery.tagit.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{css/tagit.ui-zendesk.css}" rel="stylesheet" type="text/css"/>
+    <script th:src="@{js/tag-it.js}" type="text/javascript" charset="utf-8"></script>
+</head>
 <body class="left-sidebar">
 
 <div layout:fragment="content">
     <div id="content">
         <div class="inner">
-        	<article class="box post post-excerpt">
-				<div class="info">
-					<!--
+            <article class="box post post-excerpt">
+                <div class="info">
+                    <!--
                         Note: The date should be formatted exactly as it's shown below. In particular, the
                         "least significant" characters of the month should be encapsulated in a <span>
                         element to denote what gets dropped in 1200px mode (eg. the "uary" in "January").
@@ -19,82 +27,111 @@
 
                     -->
                     <span class="date"><span class="month">Jul<span>y</span></span> <span class="day">15</span><span
-							class="year">, 2014</span></span>
-				</div>
-				<h2>Create of article</h2>
-						<form action="#" method="post" th:object="${article}" th:action="@{/post}">  <!-- //TODO ajouter l'assocation avec entity -->
+                            class="year">, 2014</span></span>
+                </div>
+                <h2>Create of article</h2>
 
-							<div class="row uniform">
-								<div class="6u 12u$(4)">
-									<label for="authorArticle">Author name :</label>
-									<input type="text" name="authorArticle" id="authorArticle" placeholder="Author of article"/>
-								</div>
-								<div class="6u$ 12u$(4)">
-									<label for="titleArticle">Title :</label>
-									<input type="text" name="titleArticle" id="titleArticle" placeholder="Title of article"/>
-								</div>
+                <form action="#" method="post" th:action="@{/post}">  <!-- //TODO ajouter l'assocation avec entity -->
 
-								<div class="6u$ 12u$(4)">
-									<label for="keyWords">Key words of article :</label>
-									<input type="text" name="keyWords" id="keyWords" placeholder="KeyWords"/>
-								</div>
-								<!-- Break -->
-								<div class="12u$">
-									<div class="select-wrapper">
-										<select name="category" id="category">
-											<option value="">- Category -</option>
-											<option value="1">Manufacturing</option>
-											<option value="1">Shipping</option>
-											<option value="1">Administration</option>
-											<option value="1">Human Resources</option>
-										</select>
-									</div>
-								</div>
-								<!-- Break -->
-								<div class="4u 12u$(3)">
-									<input type="radio" id="privacy-private" name="privacy" checked="true"/>
-									<label for="privacy-private">Private</label>
-								</div>
-								<div class="4u 12u$(3)">
-									<input type="radio" id="privacy-public" name="privacy" />
-									<label for="privacy-public">Public</label>
-								</div>
-								<div class="4u$ 12u$(3)">
-									<input type="radio" id="privacy-me" name="privacy" />
-									<label for="privacy-me">Only me</label>
-								</div>
-								<!-- Break -->
-								<div class="6u 12u$(3)">
-									<input type="checkbox" id="PostFacebook" name="PostFacebook" checked="true" />
-									<label for="PostFacebook">Post of Facebook</label>
-								</div>
-								<div class="6u$ 12u$(3)">
-									<input type="checkbox" id="PostTwitter" name="PostTwitter" checked="true" />
-									<label for="PostTwitter">Post of Twitter</label>
-								</div>
-								<!-- Break -->
-								<div class="12u$">
-									<label for="contentArticle">Content of article :</label>
-									<textarea name="contentArticle" id="contentArticle" rows="6"
-											  placeholder="Content of this article"></textarea>
-								</div>
-								<!-- Break -->
-								<div class="12u$">
-									<ul class="actions">
-										<li><input type="submit" value="Create article" /></li>
-										<li><input type="reset" value="Reset" class="alt" /></li>
-									</ul>
-								</div>
-							</div>
+                    <div class="row uniform">
+                        <div class="6u 12u$(4)">
+                            <label for="authorArticle">Author name :</label>
+                            <!--<input type="text" name="authorArticle" id="authorArticle" th:placeholder="${session.admin.username}" th:id="${session.admin.id}" th:field="*{author}" disabled="true"/>-->
+
+                            <div th:each="user, stat : ${users}">
+                                <label name="authorArticle" id="authorArticle"
+                                       th:text="*{users[__${stat.index}__].username}"
+                                       th:if="${session.admin.equals(users[__${stat.index}__])}"/>
+                            </div>
+                        </div>
+                        <div class="6u$ 12u$(4)">
+                            <label for="titleArticle">Title :</label>
+                            <input type="text" name="titleArticle" id="titleArticle" placeholder="Title of article"
+                                   th:field="*{article.title}"/>
+                        </div>
+
+                        <div class="6u$ 12u$(4)">
+                            <label for="keyWords">Key words of article :</label>
+                            <input name="keyWords" id="keyWords" hidden="true"/>
+                            <ul name="myTags" id="myTags"></ul>
+                        </div>
+                        <!-- Break -->
+                        <div class="4u 12u$(3)">
+                            <input type="radio" id="privacy-private" name="privacy" checked="true"/>
+                            <label for="privacy-private">Private</label>
+                        </div>
+                        <div class="4u 12u$(3)">
+                            <input type="radio" id="privacy-public" name="privacy"/>
+                            <label for="privacy-public">Public</label>
+                        </div>
+                        <div class="4u$ 12u$(3)">
+                            <input type="radio" id="privacy-me" name="privacy"/>
+                            <label for="privacy-me">Only me</label>
+                        </div>
+                        <!-- Break -->
+                        <div class="6u 12u$(3)">
+                            <input type="checkbox" id="PostFacebook" name="PostFacebook" checked="true"/>
+                            <label for="PostFacebook">Post of Facebook</label>
+                        </div>
+                        <div class="6u$ 12u$(3)">
+                            <input type="checkbox" id="PostTwitter" name="PostTwitter" checked="true"/>
+                            <label for="PostTwitter">Post of Twitter</label>
+                        </div>
+                        <!-- Break -->
+                        <div class="12u$">
+                            <label for="contentArticle">Content of article :</label>
+                            <textarea name="contentArticle" id="contentArticle"
+                                      placeholder="Content of this article"
+                                      th:field="*{article.content}"></textarea>
+                        </div>
+                        <!-- Break -->
+                        <div class="12u$">
+                            <ul class="actions">
+                                <input type="submit" name="save" value="Create article"/>
+                                <li><input type="reset" value="Reset" class="alt"/></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+                <!-- </div>
+            </div> -->
+            </article>
+        </div>
+    </div>
+</div>
+<div layout:fragment="script">
+    <script type="text/javascript">
+        $(function () {
+            tinymce.init({
+                selector: "textarea",
+                theme: "modern",
+                plugins: [
+                    "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen",
+                    "insertdatetime media nonbreaking save table contextmenu directionality",
+                    "emoticons template paste textcolor colorpicker textpattern"
+                ],
+                height: 500,
+                toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+                toolbar2: "print preview media | forecolor backcolor emoticons",
+                image_advtab: true,
+                templates: [
+                    {title: 'Test template 1', content: 'Test 1'},
+                    {title: 'Test template 2', content: 'Test 2'}
+                ]
+            });
+
+            var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
 
 
-
-				          </form>
-					<!-- </div>
-				</div> -->
-			</article>
-		</div>
-	</div>
+            $('#myTags').tagit({
+                availableTags: sampleTags,
+                // This will make Tag-it submit a single form value, as a comma-delimited field.
+                singleField: true,
+                singleFieldNode: $('#keyWords')
+            });
+        });
+    </script>
 </div>
 </body>
 </html>

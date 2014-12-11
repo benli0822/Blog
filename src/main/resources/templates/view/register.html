@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<body >
+<div id="wrapper">
+<div layout:fragment="content">
+    <div id="content">
+        <div class="inner">
+            <user class="box post post-excerpt">
+
+                <h2>Register</h2>
+                <form action="#" method="post">  <!-- //TODO ajouter l'assocation avec entity -->
+
+
+                    <div class="row uniform">
+                        <div class="12u$">
+                            <label for="userNickName">User nickname :</label>
+                            <input type="text" name="userNickName" id="userNickName" placeholder="Nickname of user"/>
+                        </div>
+                        <div class="12u$">
+                            <label for="userPassword">Password :</label>
+                            <input type="password" name="userPassword" id="userPassword"
+                                   placeholder="Password of user"/>
+                        </div>
+                        <div class="12u$">
+                            <label for="userConformPassword">Confirm password :</label>
+                            <input type="password" name="userConformPassword" id="userConformPassword"
+                                   placeholder="userConformPassword"/>
+                        </div>
+
+
+
+                        <!-- Break -->
+                        <div class="12u$">
+                            <ul class="actions">
+                                <li><input type="submit" value="Register"/></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </form>
+
+                <!-- </div>
+            </div> -->
+            </user>
+        </div>
+    </div>
+</div>
+    <div layout:include="common/sidebar :: sidebar" th:hidden="true"></div>
+</div>
+
+</body>
+</html>

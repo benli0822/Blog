@@ -1,9 +1,8 @@
 package blog.domain;
 
 
-import org.hibernate.annotations.NaturalId;
-
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,31 +14,38 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToOne(optional = false)
-    @NaturalId
+    @OneToOne
     private User author;
 
+    @Size(max = 300)
     private String title;
 
+    private Date time;
+
+    @Size(max = 2000000)
     private String content;
+
+    @ElementCollection
+    private Set<String> images = new HashSet<String>();
 
     @ManyToMany(cascade = {CascadeType.ALL})
     private Set<Category> categories = new HashSet<Category>();
 
-    private Date time;
-
     @OneToMany(fetch=FetchType.LAZY)
-    private Set<Comment> comments;
+    private Set<Comment> comments = new HashSet<Comment>();
 
 
-    protected Article() {
+    public Article() {
+        this.time = new Date();
     }
 
-    public Article(User author, String title, String content, HashSet<String> keyword, Date time, Set<Comment> comments) {
+    public Article(User author, String title, Date time, String content, Set<String> images, Set<Category> categories, Set<Comment> comments) {
         this.author = author;
         this.title = title;
+        this.time = new Date();
         this.content = content;
-        this.time = time;
+        this.images = images;
+        this.categories = categories;
         this.comments = comments;
     }
 

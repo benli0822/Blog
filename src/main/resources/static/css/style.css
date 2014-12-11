@@ -457,31 +457,32 @@ input[type="radio"] + label:before {
 			padding:1%;
 			font-weight:bold;
 			margin-right:2%;
+			background:#bbcef1;
 		}
 
-		#keyWord  li:nth-child(6n+0){
-			background:red;
-		}
+		/*#keyWord  li:nth-child(6n+0){*/
+			/*background:#6d95e0;*/
+		/*}*/
 
-		#keyWord  li:nth-child(6n+1){
-			background:blue;
-		}
+		/*#keyWord  li:nth-child(6n+1){*/
+			/*background:#8F8FE6;*/
+		/*}*/
 
-		#keyWord  li:nth-child(6n+2){
-			background: yellow;
-		}
+		/*#keyWord  li:nth-child(6n+2){*/
+			/*background: #98E68F;*/
+		/*}*/
 
-		#keyWord  li:nth-child(6n+3){
-			background:green;
-		}
+		/*#keyWord  li:nth-child(6n+3){*/
+			/*background:#ECEC69;*/
+		/*}*/
 
-		#keyWord  li:nth-child(6n+4){
-			background:#ff8888;
-		}
+		/*#keyWord  li:nth-child(6n+4){*/
+			/*background:#ff8888;*/
+		/*}*/
 
-		#keyWord  li:nth-child(6n+5){
-			background:#2cbad4;
-		}
+		/*#keyWord  li:nth-child(6n+5){*/
+			/*background:#2cbad4;*/
+		/*}*/
 
 		ul.default
 		{
