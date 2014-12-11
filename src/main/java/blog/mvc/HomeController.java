@@ -28,7 +28,7 @@ public class HomeController {
     private ArticleService articleService;
 
 
-    @RequestMapping(value = "/home")
+    @RequestMapping(value = {"/", "/home"})
     public String home(Model model) {
 
         log.info("[HomeController: home], mapped by home");
