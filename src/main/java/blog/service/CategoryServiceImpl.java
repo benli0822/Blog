@@ -1,7 +1,5 @@
 package blog.service;
 
-import blog.Application;
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,7 +7,6 @@ import org.springframework.stereotype.Component;
  */
 
 @Component(value = "categoryService")
-@Import(Application.class)
 public class CategoryServiceImpl implements CategoryService {
 
 }

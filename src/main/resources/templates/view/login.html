@@ -25,7 +25,7 @@
 <body>
 
 <div class="page-container">
-    <h1>Blog Login</h1>
+    <a href="/"><h1>Blog Login</h1></a>
 
     <br/>
     <div th:if="${param.error}">
@@ -37,7 +37,9 @@
     <form th:action="@{/login}" method="post">
         <input type="text" name="username" class="username" placeholder="Please give your usename!"/>
         <input type="password" name="password" class="password" placeholder="Please insert your password!"/>
-        <button type="submit" class="submit_button">Submit</button>
+        <!--<button type="submit" class="submit_button">Submit</button>-->
+        <input type="submit" value="Submit"/>
+        <input type="reset" value="Reset"/>
         <div class="error">
             <span>+</span>
         </div>

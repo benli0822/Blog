@@ -1,12 +1,10 @@
 package blog.mvc;
 
-import blog.Application;
 import blog.domain.Article;
 import blog.service.ArticleService;
 import blog.service.repository.ArticleRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created by JIN Benli on 17/11/14.
  */
 @Controller
-@Import(Application.class)
 public class HomeController {
 
     private Logger log = Logger.getLogger(HomeController.class);

@@ -59,6 +59,83 @@ input {
     -ms-transition: all .2s;
 }
 
+/* Button */
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.button
+{
+    cursor: pointer;
+    background-color: #c94663;
+    background-image: url('images/bg01.png');
+    border-radius: 0.4em;
+    text-align: center;
+    box-shadow: inset 0px 0px 0px 1px rgba(255,255,255,0.15);
+    color: #fff;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    -moz-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+    -webkit-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+    -o-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+    -ms-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+    transition: background-color .25s ease-in-out, color .25s ease-in-out;
+    text-shadow: -1px -1px 0px rgba(0,0,0,0.5);
+}
+
+input[type="button"]:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled,
+input[type="button"].disabled,
+input[type="submit"].disabled,
+input[type="reset"].disabled,
+.button.disabled
+{
+    opacity: 0.35;
+    cursor: default;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+.button:hover
+{
+    background-color: #d95673;
+}
+
+input[type="button"]:active,
+input[type="submit"]:active,
+input[type="reset"]:active,
+.button:active
+{
+    background-color: #b93653;
+}
+
+input[type="button"].alt,
+input[type="submit"].alt,
+input[type="reset"].alt,
+.button.alt
+{
+    background-color: #364050;
+}
+
+input[type="button"].alt:hover,
+input[type="submit"].alt:hover,
+input[type="reset"].alt:hover,
+.button.alt:hover
+{
+    background-color: #465060;
+}
+
+input[type="button"].alt:active,
+input[type="submit"].alt:active,
+input[type="reset"].alt:active,
+.button.alt:active
+{
+    background-color: #263040;
+}
+
 input:-moz-placeholder { color: #fff; }
 input:-ms-input-placeholder { color: #fff; }
 input::-webkit-input-placeholder { color: #fff; }

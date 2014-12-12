@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <body>
 <div layout:fragment="sidebar">
@@ -13,8 +14,14 @@
         <nav id="nav">
             <ul>
                 <li><a href="/home">Latest Post</a></li>
-                <li><a href="/post">Create an article</a></li>
-                <li><a href="/setting">User settings</a></li>
+                <li><a href="/login" th:if="${#httpServletRequest.remoteUser == null}">Login</a></li>
+                <li><a href="/post" th:if="${#httpServletRequest.remoteUser != null}">Create an article</a></li>
+                <li><a href="/setting" th:if="${#httpServletRequest.remoteUser != null}">User settings</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" th:if="${#httpServletRequest.remoteUser != null}">
+                        <input type="submit" value="Sign Out"/>
+                    </form>
+                </li>
             </ul>
         </nav>
 

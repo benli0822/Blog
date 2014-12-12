@@ -1,6 +1,5 @@
 package blog.service;
 
-import blog.Application;
 import blog.domain.Article;
 import blog.domain.Category;
 import blog.domain.User;
@@ -8,20 +7,14 @@ import blog.service.repository.ArticleRepository;
 import blog.service.repository.CategoryRepository;
 import blog.service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Created by JIN Benli on 01/12/14.
  */
 @Component(value = "articleService")
-@Import(Application.class)
 public class ArticleServiceImpl implements ArticleService {
 
     @Autowired

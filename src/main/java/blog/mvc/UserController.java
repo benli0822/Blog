@@ -1,9 +1,7 @@
 package blog.mvc;
 
-import blog.Application;
 import blog.domain.User;
 import org.apache.log4j.Logger;
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by JIN Benli on 17/11/14.
  */
 @Controller
-@Import(Application.class)
 public class UserController {
 
 //    @Autowired

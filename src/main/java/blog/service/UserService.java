@@ -1,13 +1,15 @@
 package blog.service;
 
 import blog.domain.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.HashMap;
 
 /**
+ * User service implements UserDetailsService to integrate in Authentication module
  * Created by JIN Benli on 01/12/14.
  */
-public interface UserService {
+public interface UserService extends UserDetailsService {
     /* Find user */
     public User findUserByArticle(long aid);
 

@@ -1,6 +1,5 @@
 package blog.mvc;
 
-import blog.Application;
 import blog.domain.Article;
 import blog.domain.Category;
 import blog.domain.User;
@@ -9,7 +8,6 @@ import blog.service.repository.CategoryRepository;
 import blog.service.repository.UserRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -19,13 +17,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by JIN Benli on 17/11/14.
  */
 @Controller
-@Import(Application.class)
 public class BlogController {
 
     private Logger log = Logger.getLogger(BlogController.class);
