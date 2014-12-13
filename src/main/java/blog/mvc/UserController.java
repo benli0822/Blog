@@ -19,18 +19,18 @@ public class UserController {
 
     private Logger log = Logger.getLogger(UserController.class);
 
-    @RequestMapping(value = "update")
-    public String update() {
-        return "view/setting";
+    @RequestMapping(value = "/setting")
+    public String setting() {
+        return "view/userSetting";
     }
 
     @RequestMapping(value = "update", method = RequestMethod.POST, params = {"save"})
     public String update(final User user, final BindingResult bindingResult, final ModelMap model) {
         if (bindingResult.hasErrors()) {
-            return "view/setting";
+            return "view/userSetting";
         }
 //        userService.updateUser(long uid, HashMap<String, String> values);
         model.clear();
-        return "redirect:/view/setting";
+        return "redirect:/setting";
     }
 }

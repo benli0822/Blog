@@ -41,8 +41,4 @@ public class HomeController {
         return "view/simpleArticle";
     }
 
-    @RequestMapping(value = "/setting")
-    public String setting() {
-        return "view/userSetting";
-    }
 }
