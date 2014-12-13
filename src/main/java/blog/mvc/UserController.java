@@ -20,7 +20,7 @@ public class UserController {
     private Logger log = Logger.getLogger(UserController.class);
 
     @RequestMapping(value = "/setting")
-    public String setting() {
+    public String setting(final User user) {
         return "view/userSetting";
     }
 

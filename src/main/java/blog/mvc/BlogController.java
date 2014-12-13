@@ -40,14 +40,14 @@ public class BlogController {
     private CategoryRepository categoryRepository;
 
     @RequestMapping(value = "post")
-    public String post(final Article article, Model model, HttpSession session) {
+    public String post(final Article article, Model model, HttpSession session, HttpServletRequest req) {
         log.info("[BlogController: post], listing post form");
-        User admin  = userRepository.findUserByUsername("admin");
+        User user  = userRepository.findUserByUsername(req.getRemoteUser());
 
-        session.setAttribute("admin", admin);
+        session.setAttribute("user", user);
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("categories", categoryRepository.findAll());
-        log.info(session.getAttribute("admin"));
+        log.info(session.getAttribute("user"));
         log.info(model);
         return "view/post";
     }
@@ -95,7 +95,7 @@ public class BlogController {
             }
         }
 
-        User admin = (User) session.getAttribute("admin");
+        User admin = (User) session.getAttribute("user");
 
         article.setAuthor(admin);
         log.info(article);

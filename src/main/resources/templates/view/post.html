@@ -37,12 +37,16 @@
                         <div class="6u 12u$(4)">
                             <label for="authorArticle">Author name :</label>
                             <!--<input type="text" name="authorArticle" id="authorArticle" th:placeholder="${session.admin.username}" th:id="${session.admin.id}" th:field="*{author}" disabled="true"/>-->
+                            <br/>
+                            <label name="authorArticle" id="authorArticle" th:inline="text">
+                                [[${#httpServletRequest.remoteUser}]]
+                            </label>
 
-                            <div th:each="user, stat : ${users}">
-                                <label name="authorArticle" id="authorArticle"
-                                       th:text="*{users[__${stat.index}__].username}"
-                                       th:if="${session.admin.equals(users[__${stat.index}__])}"/>
-                            </div>
+                            <!--<div th:each="user, stat : ${users}">-->
+                                <!--<label name="authorArticle" id="authorArticle"-->
+                                       <!--th:text="*{users[__${stat.index}__].username}"-->
+                                       <!--th:if="${session.admin.equals(users[__${stat.index}__])}"/>-->
+                            <!--</div>-->
                         </div>
                         <div class="6u$ 12u$(4)">
                             <label for="titleArticle">Title :</label>
