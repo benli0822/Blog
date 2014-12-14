@@ -15,6 +15,7 @@
             <ul>
                 <li><a href="/home">Latest Post</a></li>
                 <li><a href="/login" th:if="${#httpServletRequest.remoteUser == null}">Login</a></li>
+                <li><a href="/register" th:if="${#httpServletRequest.remoteUser == null}">Register</a></li>
                 <li><a href="/post" th:if="${#httpServletRequest.remoteUser != null}">Create an article</a></li>
                 <li><a href="/setting" th:if="${#httpServletRequest.remoteUser != null}">User settings</a></li>
                 <li>
