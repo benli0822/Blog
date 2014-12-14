@@ -90,7 +90,7 @@ public class ArticleRestController {
         ResponseEntity<Article> entity = new ResponseEntity<Article>(headers, HttpStatus.OK);
 
 
-        // Send a message
+        // Send a message to jms
         myMessageCreator messageCreator = new myMessageCreator(String.valueOf(articleID));
 
         JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
