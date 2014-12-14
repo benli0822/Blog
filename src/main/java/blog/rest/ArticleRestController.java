@@ -3,29 +3,35 @@ package blog.rest;
 import blog.Application;
 import blog.domain.Article;
 import blog.domain.User;
+import blog.jms.myMessageCreator;
 import blog.service.UserService;
 import blog.service.repository.ArticleRepository;
 import blog.service.repository.UserRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
 import javax.jws.soap.SOAPBinding;
 import javax.persistence.Access;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.server.PathParam;
-import javax.xml.ws.Response;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by jamesRMBP on 08/12/14.
+ * this is the controller for all article rest services
  */
 @Controller
 @RequestMapping("/api/article")
@@ -37,8 +43,21 @@ public class ArticleRestController {
     @Autowired
     UserRepository userRepository;
 
+    static String mailboxDestination = "mailbox-destination";
+
+    @Autowired
+    ConfigurableApplicationContext context;
+
+
     private Logger log = Logger.getLogger(ArticleRestController.class);
 
+    /**
+     * post an article by rest
+     * @param article
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value = "/restPostArticle", method = RequestMethod.POST)
     public
     @ResponseBody
@@ -62,13 +81,24 @@ public class ArticleRestController {
         article1.setTime(new Date());
         article1.setTitle(title);
         article1.setContent(content);
-
-        articleRepository.save(article1);
+        long articleID = articleRepository.save(article1).getId();
         log.info(articleRepository.count());
         log.info("get a article: " + title + "contenu : " + content);
 
+
         HttpHeaders headers = addAccessControllAllowOrigin();
         ResponseEntity<Article> entity = new ResponseEntity<Article>(headers, HttpStatus.OK);
+
+
+        // Send a message
+        myMessageCreator messageCreator = new myMessageCreator(String.valueOf(articleID));
+
+        JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
+        System.out.println("Sending a new message.");
+        jmsTemplate.send(mailboxDestination, messageCreator);
+
+
+
         return  entity;
     }
 

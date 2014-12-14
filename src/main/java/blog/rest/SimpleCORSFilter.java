@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+/**
+ * this is the class SimpleCORSFilter for Enabling Cross Origin Requests for a RESTful Web Service
+ */
 @Component
 public class SimpleCORSFilter implements Filter {
-    private Logger log = Logger.getLogger(SimpleCORSFilter.class);
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
         response.setHeader("Access-Control-Allow-Origin", "*");
@@ -24,7 +26,6 @@ public class SimpleCORSFilter implements Filter {
         response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         chain.doFilter(req, res);
 
-        log.info("this is in the filter");
     }
 
     public void init(FilterConfig filterConfig) {}

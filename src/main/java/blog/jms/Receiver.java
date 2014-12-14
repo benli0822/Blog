@@ -1,7 +1,9 @@
 package blog.jms;
 
 import blog.domain.Article;
+import blog.service.repository.ArticleRepository;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FileSystemUtils;
 
 import java.io.File;
@@ -13,9 +15,15 @@ public class Receiver {
 
     private Logger log = Logger.getLogger(Receiver.class);
 
-    public void receiveMessage(Article article) {
+    @Autowired
+    private ArticleRepository articleRepository;
 
-        log.info("recevice a message");
+    //recive methode
+    public void receiveMessage(String articleID) {
+
+        log.info(articleID);
+
+
         FileSystemUtils.deleteRecursively(new File("activemq-data"));
     }
 }
