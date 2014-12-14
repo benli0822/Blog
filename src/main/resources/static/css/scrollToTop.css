@@ -71,32 +71,32 @@ html {
 
 /* skin(cycle) */
 .scrollToTop_cycle {
-	background-image: url("../images/cycle.png");
+	background-image: url("images/cycle.png");
 }
 .scrollToTop_cycle:hover {
-	background-image: url("../images/cycle-hover.png");
+	background-image: url("images/cycle-hover.png");
 }
 
 /* skin(square) */
 .scrollToTop_square {
-	background-image: url("../images/square.png");
+	background-image: url("images/square.png");
 }
 .scrollToTop_square:hover {
-	background-image: url("../images/square-hover.png");
+	background-image: url("images/square-hover.png");
 }
 
 /* skin(text) */
 .scrollToTop_text {
-	background-image: url("../images/text.png");
+	background-image: url("images/text.png");
 }
 .scrollToTop_text:hover {
-	background-image: url("../images/text-hover.png");
+	background-image: url("images/text-hover.png");
 }
 
 /* skin(triangle) */
 .scrollToTop_triangle {
-	background-image: url("../images/triangle.png");
+	background-image: url("images/triangle.png");
 }
 .scrollToTop_triangle:hover {
-	background-image: url("../images/triangle-hover.png");
+	background-image: url("images/triangle-hover.png");
 }

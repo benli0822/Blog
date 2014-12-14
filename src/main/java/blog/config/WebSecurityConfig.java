@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -31,16 +32,39 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home", "/assets/**", "/css/**", "/js/**", "/api/**").permitAll()
-                .and()
+                .antMatchers("/").permitAll()
+                .antMatchers("/home").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/js/**").permitAll()
+                .antMatchers("/assets/**").permitAll()
+                .anyRequest().authenticated();
+
+        http
                 .formLogin().failureUrl("/login?error")
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/home")
                 .permitAll()
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
                 .permitAll();
+
+//        http
+//                .sessionManagement()
+//                .maximumSessions(1)
+//                .expiredUrl("/login?expired")
+//                .maxSessionsPreventsLogin(true)
+//                .and()
+//                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+//                .invalidSessionUrl("/");
+
+    }
+
+    @Override
+    public void configure(WebSecurity security) throws Exception {
+        security.ignoring()
+                .antMatchers("/css/**")
+                .antMatchers("/js/**");
     }
 
     @Autowired

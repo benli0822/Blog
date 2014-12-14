@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout">
 <body>
@@ -27,23 +28,23 @@
 
                     <div class="row uniform">
                         <div class="12u$">
-                            <label for="userNickName">User nickname :</label>
-                            <input type="text" name="userNickName" id="userNickName" placeholder="Nickname of user"/>
+                            <label for="username">Username :</label>
+                            <input type="text" name="username" id="username" placeholder="Username" th:value="${session.user.username}" disabled="true"/>
                         </div>
 
                         <div class="12u$">
-                            <label for="firstnameUser">Firstname :</label>
-                            <input type="text" name="firstnameUser" id="firstnameUser" placeholder="Firstname  of user"/>
+                            <label for="firstname">Firstname :</label>
+                            <input type="text" name="firstname" id="firstname" placeholder="Firstname" th:value="${session.user.firstname}"/>
                         </div>
 
                         <div class="12u$">
-                            <label for="lastnameuser">Lastname :</label>
-                            <input type="text" name="lastnameuser" id="lastnameuser" placeholder="Lastname of user"/>
+                            <label for="lastname">Lastname :</label>
+                            <input type="text" name="lastname" id="lastname" placeholder="Lastname" th:value="${session.user.lastname}"/>
                         </div>
 
                         <div class="12u$">
                             <label for="mailUser">Mail :</label>
-                            <input type="text" name="mailUser" id="mailUser" placeholder="Mail of user"/>
+                            <input type="text" name="mailUser" id="mailUser" placeholder="Mail" th:value="${session.user.email}"/>
                         </div>
                         <div class="12u$">
                             <label for="userPassword">Password :</label>

@@ -102,6 +102,7 @@ public class BlogController {
         log.info(article.getCategories());
         //TODO if category is new, the add it to article and add it to lib, if not, add dependency between category and article
         articleService.createArticle(article);
+        session.removeAttribute("user");
         model.clear();
         return "redirect:/home";
     }
