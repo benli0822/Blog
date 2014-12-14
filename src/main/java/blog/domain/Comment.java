@@ -14,12 +14,10 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToOne(optional = false)
-    @NaturalId
+    @ManyToOne
     private Article article;
 
-    @OneToOne(optional = false)
-    @NaturalId
+    @OneToOne
     private User author;
 
     private String content;
@@ -61,6 +59,14 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     @Override

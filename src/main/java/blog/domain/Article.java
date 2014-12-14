@@ -33,7 +33,7 @@ public class Article {
     @ManyToMany(cascade = {CascadeType.ALL})
     private Set<Category> categories = new HashSet<Category>();
 
-    @OneToMany(fetch=FetchType.LAZY)
+    @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
     private Set<Comment> comments = new HashSet<Comment>();
 
 
@@ -48,6 +48,16 @@ public class Article {
         this.content = content;
         this.images = images;
         this.categories = categories;
+        this.comments = comments;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+    public void addComments(Comment comment){
+        this.comments.add(comment);
+    }
+    public void setComments(Set<Comment> comments) {
         this.comments = comments;
     }
 

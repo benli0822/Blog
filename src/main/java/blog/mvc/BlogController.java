@@ -5,6 +5,7 @@ import blog.domain.Category;
 import blog.domain.User;
 import blog.service.ArticleService;
 import blog.service.repository.CategoryRepository;
+import blog.service.repository.CommentRepository;
 import blog.service.repository.UserRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class BlogController {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
 
     @RequestMapping(value = "post")
     public String post(final Article article, Model model, HttpSession session, HttpServletRequest req) {
