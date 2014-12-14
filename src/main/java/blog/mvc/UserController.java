@@ -31,14 +31,23 @@ public class UserController {
     public String setting(final User user, HttpServletRequest request, HttpSession session) {
         log.info("[UserController: setting], listing setting form");
         User theUser = userRepository.findUserByUsername(request.getRemoteUser());
-        session.setAttribute("user", theUser);
-        log.info(session.getAttribute("user"));
+        session.setAttribute("theUser", theUser);
+        user.setId(theUser.getId());
+        user.setUsername(theUser.getUsername());
+        user.setPassword(theUser.getPassword());
+        user.setFirstname(theUser.getFirstname());
+        user.setLastname(theUser.getLastname());
+        user.setEmail(theUser.getEmail());
+        user.setTwitter(theUser.getTwitter());
+        user.setFacebook(theUser.getFacebook());
+        log.info(session.getAttribute("theUser"));
         return "view/userSetting";
     }
 
-    @RequestMapping(value = "update", method = RequestMethod.POST, params = {"save"})
-    public String update(final User user, final BindingResult bindingResult, final ModelMap model) {
+    @RequestMapping(value = "/setting", method = RequestMethod.POST, params = {"save"})
+    public String setting(final User user, final BindingResult bindingResult, final ModelMap model) {
         if (bindingResult.hasErrors()) {
+            log.error(bindingResult.getAllErrors());
             return "view/userSetting";
         }
 //        userService.updateUser(long uid, HashMap<String, String> values);

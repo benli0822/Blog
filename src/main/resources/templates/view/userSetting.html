@@ -23,28 +23,28 @@
 
                 <h2>User setting</h2>
 
-                <form action="#" method="post">  <!-- //TODO ajouter l'assocation avec entity -->
+                <form th:action="@{/setting}" method="post">  <!-- //TODO ajouter l'assocation avec entity -->
 
 
                     <div class="row uniform">
                         <div class="12u$">
                             <label for="username">Username :</label>
-                            <input type="text" name="username" id="username" placeholder="Username" th:value="${session.user.username}" disabled="true"/>
+                            <input type="text" name="username" id="username" placeholder="Username" th:field="*{user.username}" disabled="true"/>
                         </div>
 
                         <div class="12u$">
                             <label for="firstname">Firstname :</label>
-                            <input type="text" name="firstname" id="firstname" placeholder="Firstname" th:value="${session.user.firstname}"/>
+                            <input type="text" name="firstname" id="firstname" placeholder="Firstname" th:field="*{user.firstname}"/>
                         </div>
 
                         <div class="12u$">
                             <label for="lastname">Lastname :</label>
-                            <input type="text" name="lastname" id="lastname" placeholder="Lastname" th:value="${session.user.lastname}"/>
+                            <input type="text" name="lastname" id="lastname" placeholder="Lastname" th:field="*{user.lastname}"/>
                         </div>
 
                         <div class="12u$">
                             <label for="mailUser">Mail :</label>
-                            <input type="text" name="mailUser" id="mailUser" placeholder="Mail" th:value="${session.user.email}"/>
+                            <input type="text" name="mailUser" id="mailUser" placeholder="Mail" th:field="*{user.email}"/>
                         </div>
                         <div class="12u$">
                             <label for="userPassword">Password :</label>
@@ -69,7 +69,7 @@
                         <!-- Break -->
                         <div class="12u$">
                             <ul class="actions">
-                                <li><input type="submit" value="Save user setting"/></li>
+                                <li><input type="submit" value="Save user setting" name="save"/></li>
                             </ul>
                         </div>
 

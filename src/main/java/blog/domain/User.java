@@ -4,12 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by JIN Benli on 24/11/14.
  */
 @Entity
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,11 +33,11 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, String firstname, String lastname, String email, String facebook, String twitter) {
+    public User(String username, String password, String firstName, String last, String email, String facebook, String twitter) {
         this.username = username;
         this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstname = firstName;
+        this.lastname = last;
         this.email = email;
         this.facebook = facebook;
         this.twitter = twitter;
