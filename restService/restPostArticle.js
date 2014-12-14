@@ -4,20 +4,21 @@
 function postArticle() {
     var article = {
         "content": "this is a article created by rest",
-        "title": "rest artcile"
+        "title": "rest artcile",
+        "username": "lemattmatt"
+
 
     };
+
     $.ajax({
         type: "POST",
         contentType: 'application/json; charset=utf-8',
-        dataType: 'application/json',
-        url: "/api/restPostArticle",
-        data: JSON.stringify(article), // Note it is important
+        dataType: 'json',
+        url: "http://localhost:8080/api/article/restPostArticle",
+        data: JSON.stringify(article),// Note it is important
         success: function (result) {
-            if(data.status == 'OK') alert('Person has been added');
+            if (data.status == 'OK') alert('Person has been added');
             else alert('Failed adding person: ' + data.status + ', ' + data.errorMessage);
         }
     });
-
-    /*var res = $http.post('http://localhost:8080/api/restPostArticle', article);*/
 }

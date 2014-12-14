@@ -2,6 +2,7 @@ package blog;
 
 import blog.domain.Article;
 import blog.domain.User;
+import blog.jms.Receiver;
 import blog.service.repository.ArticleRepository;
 import blog.service.repository.UserRepository;
 import org.h2.server.web.WebServlet;
@@ -12,6 +13,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jms.listener.SimpleMessageListenerContainer;
+import org.springframework.jms.listener.adapter.MessageListenerAdapter;
+import javax.jms.ConnectionFactory;
+
 
 /**
  * Created by JIN Benli on 17/11/14.
@@ -20,6 +25,32 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 public class Application {
+
+    static String mailboxDestination = "mailbox-destination";
+
+    @Bean
+    Receiver receiver() {
+        return new Receiver();
+    }
+
+    @Bean
+    MessageListenerAdapter adapter(Receiver receiver) {
+        MessageListenerAdapter messageListener
+                = new MessageListenerAdapter(receiver);
+        messageListener.setDefaultListenerMethod("receiveMessage");
+        return messageListener;
+    }
+
+    @Bean
+    SimpleMessageListenerContainer container(MessageListenerAdapter messageListener,
+                                             ConnectionFactory connectionFactory) {
+        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
+        container.setMessageListener(messageListener);
+        container.setConnectionFactory(connectionFactory);
+        container.setDestinationName(mailboxDestination);
+        return container;
+    }
+
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class);
