@@ -13,8 +13,8 @@ function postArticle() {
     $.ajax({
         type: "POST",
         contentType: 'application/json; charset=utf-8',
-        dataType: 'application/json',
-        url: "http://localhost:8080/api/restPostArticle",
+        dataType: 'json',
+        url: "http://localhost:8080/api/article/restPostArticle",
         data: JSON.stringify(article),// Note it is important
         success: function (result) {
             if (data.status == 'OK') alert('Person has been added');

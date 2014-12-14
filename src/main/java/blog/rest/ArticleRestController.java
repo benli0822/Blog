@@ -9,12 +9,18 @@ import blog.service.repository.UserRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.jws.soap.SOAPBinding;
+import javax.persistence.Access;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.websocket.server.PathParam;
+import javax.xml.ws.Response;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +28,7 @@ import java.util.List;
  * Created by jamesRMBP on 08/12/14.
  */
 @Controller
-@Import(Application.class)
+@RequestMapping("/api/article")
 public class ArticleRestController {
 
     @Autowired
@@ -33,10 +39,15 @@ public class ArticleRestController {
 
     private Logger log = Logger.getLogger(ArticleRestController.class);
 
-    @RequestMapping(value = "/api/restPostArticle", method = RequestMethod.POST)
+    @RequestMapping(value = "/restPostArticle", method = RequestMethod.POST)
     public
     @ResponseBody
-    String ResponseToAPost(@RequestBody Article article,HttpServletRequest request) {
+    ResponseEntity<Article> ResponseToAPost(@RequestBody Article article,HttpServletRequest request , HttpServletResponse response) {
+
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+        response.addHeader("Access-Control-Allow-Headers", "Content-Type");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
 
         //get data from jason
         String title = article.getTitle();
@@ -56,15 +67,22 @@ public class ArticleRestController {
         log.info(articleRepository.count());
         log.info("get a article: " + title + "contenu : " + content);
 
+        HttpHeaders headers = addAccessControllAllowOrigin();
+        ResponseEntity<Article> entity = new ResponseEntity<Article>(headers, HttpStatus.OK);
+        return  entity;
+    }
 
-        return null;
+    private HttpHeaders addAccessControllAllowOrigin() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "*");
+        return headers;
     }
 
     /**
      * get all article
      * @return get all articles
      */
-    @RequestMapping(value = "/api/getAllArticles", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAllArticles", method = RequestMethod.GET)
     public
     @ResponseBody
     List<Article> getAll() {
@@ -75,7 +93,7 @@ public class ArticleRestController {
      * post a article by
      * @return
      */
-    @RequestMapping(value = "/api/restPostArticle", method = RequestMethod.GET)
+    @RequestMapping(value = "/restPostArticle")
     public
     @ResponseBody
     List<Article> postResult() {
@@ -87,7 +105,7 @@ public class ArticleRestController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/api/getArticle/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getArticle/{id}", method = RequestMethod.GET)
     public
     @ResponseBody
     Article getArticleById(@PathVariable long id) {
