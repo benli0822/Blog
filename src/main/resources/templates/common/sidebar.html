@@ -14,11 +14,11 @@
         <nav id="nav">
             <ul>
                 <li><a href="/home">Latest Post</a></li>
-                <li><a href="/login" th:if="${#httpServletRequest.remoteUser == null}">Login</a></li>
-                <li><a href="/post" th:if="${#httpServletRequest.remoteUser != null}">Create an article</a></li>
-                <li><a href="/setting" th:if="${#httpServletRequest.remoteUser != null}">User settings</a></li>
-                <li>
-                    <form th:action="@{/logout}" method="post" th:if="${#httpServletRequest.remoteUser != null}">
+                <li th:if="${#httpServletRequest.remoteUser == null}"><a href="/login">Login</a></li>
+                <li th:if="${#httpServletRequest.remoteUser != null}"><a href="/post">Create an article</a></li>
+                <li th:if="${#httpServletRequest.remoteUser != null}"><a href="/setting">User settings</a></li>
+                <li th:if="${#httpServletRequest.remoteUser != null}">
+                    <form th:action="@{/logout}" method="post">
                         <input type="submit" value="Sign Out"/>
                     </form>
                 </li>
