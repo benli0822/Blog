@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Hello Facebook</title>
+    <meta http-equiv="refresh" content="0; url=/"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/assets/css/reset.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/supersized.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="page-container">
+    <h3>Connected to Twitter</h3>
+
+    <p>
+        You are now connected to your Twitter account.
+        Click <a href="/">here</a> to see some entries from your Facebook home feed.</p>
+
+</div>
+
+<!-- Javascript -->
+<script th:src="@{/assets/js/jquery-1.8.2.min.js}"></script>
+<script th:src="@{/assets/js/supersized.3.2.7.min.js}"></script>
+<script th:src="@{/assets/js/supersized-init.js}"></script>
+<script th:src="@{/assets/js/scripts.js}"></script>
+</body>
+</html>

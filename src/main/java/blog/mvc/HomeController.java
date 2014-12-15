@@ -9,9 +9,13 @@ import blog.service.repository.CommentRepository;
 import blog.service.repository.UserRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.PagedList;
 import org.springframework.social.facebook.api.Post;
+import org.springframework.social.twitter.api.CursoredList;
+import org.springframework.social.twitter.api.Twitter;
+import org.springframework.social.twitter.api.TwitterProfile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -45,10 +49,15 @@ public class HomeController {
     private UserRepository userRepository;
 
     private Facebook facebook;
+    private Twitter twitter;
+
+    private ConnectionRepository connectionRepository;
 
     @Inject
-    public HomeController(Facebook facebook) {
+    public HomeController(Facebook facebook, Twitter twitter, ConnectionRepository connectionRepository) {
         this.facebook = facebook;
+        this.twitter = twitter;
+        this.connectionRepository = connectionRepository;
     }
 
 
@@ -57,6 +66,14 @@ public class HomeController {
         if (!facebook.isAuthorized()) {
             return "redirect:/connect/facebook";
         }
+
+        if (connectionRepository.findPrimaryConnection(Twitter.class) == null) {
+            return "redirect:/connect/twitter";
+        }
+
+        model.addAttribute(twitter.userOperations().getUserProfile());
+        CursoredList<TwitterProfile> friends = twitter.friendOperations().getFriends();
+        model.addAttribute("friends", friends);
 
         log.info("[HomeController: home], mapped by home");
         model.addAttribute("articles", articleService.listArticleOrderByTime());
