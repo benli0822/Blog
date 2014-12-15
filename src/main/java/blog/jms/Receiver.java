@@ -13,7 +13,7 @@ import org.springframework.util.FileSystemUtils;
 
 import java.io.File;
 
-/**
+/** Message recevier
  * Created by jamesRMBP on 12/12/14.
  */
 public class Receiver {

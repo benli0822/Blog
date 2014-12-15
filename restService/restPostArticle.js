@@ -6,8 +6,6 @@ function postArticle() {
         "content": "this is a article created by rest",
         "title": "rest artcile",
         "username": "lemattmatt"
-
-
     };
 
     $.ajax({
