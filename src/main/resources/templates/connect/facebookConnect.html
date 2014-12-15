@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>Hello Facebook</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/assets/css/reset.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/supersized.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="page-container">
+    <h1>Connect to Facebook</h1>
+
+    <form action="/connect/facebook" method="POST">
+        <input type="hidden" name="scope" value="read_stream"/>
+
+        <div class="formInfo">
+            <p>You aren't connected to Facebook yet. Click the button to connect this application with your Facebook
+                account.</p>
+        </div>
+        <p>
+            <input type="submit" value="Connect to Facebook" />
+        </p>
+    </form>
+</div>
+
+
+<!-- Javascript -->
+<script th:src="@{/assets/js/jquery-1.8.2.min.js}"></script>
+<script th:src="@{/assets/js/supersized.3.2.7.min.js}"></script>
+<script th:src="@{/assets/js/supersized-init.js}"></script>
+<script th:src="@{/assets/js/scripts.js}"></script>
+</body>
+</html>

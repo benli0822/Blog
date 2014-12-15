@@ -9,6 +9,9 @@ import blog.service.repository.CommentRepository;
 import blog.service.repository.UserRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.PagedList;
+import org.springframework.social.facebook.api.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -17,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 /**
@@ -41,12 +44,25 @@ public class HomeController {
     @Autowired
     private UserRepository userRepository;
 
+    private Facebook facebook;
+
+    @Inject
+    public HomeController(Facebook facebook) {
+        this.facebook = facebook;
+    }
+
 
     @RequestMapping(value = {"/", "/home"})
     public String home(Model model) {
+        if (!facebook.isAuthorized()) {
+            return "redirect:/connect/facebook";
+        }
 
         log.info("[HomeController: home], mapped by home");
         model.addAttribute("articles", articleService.listArticleOrderByTime());
+        model.addAttribute(facebook.userOperations().getUserProfile());
+        PagedList<Post> homeFeed = facebook.feedOperations().getHomeFeed();
+        model.addAttribute("feed", homeFeed);
         log.info(model);
         return "view/home";
     }
@@ -66,7 +82,7 @@ public class HomeController {
 
         if (bindingResult.hasErrors()) {
             log.error(bindingResult.getAllErrors());
-            return "redirect:/home" ;
+            return "redirect:/home";
         }
 
         Article article = articleRepository.findOne(Long.valueOf(aid));
@@ -75,7 +91,7 @@ public class HomeController {
 
         comment.setTime(new Date());
 
-        User user  = userRepository.findUserByUsername(req.getRemoteUser());
+        User user = userRepository.findUserByUsername(req.getRemoteUser());
         comment.setAuthor(user);
         article.addComments(comment);
         comment.setArticle(articleRepository.save(article));
@@ -83,12 +99,8 @@ public class HomeController {
         commentRepository.save(comment);
 
 
-
-
-
-        return "redirect:/article?id="+aid;
+        return "redirect:/article?id=" + aid;
     }
-
 
 
 }

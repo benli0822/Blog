@@ -69,6 +69,35 @@
                 <hr/>
             </tr>
 
+            <!-- Post -->
+
+            <tr th:each="post : ${feed}">
+                <article class="box post post-excerpt">
+                    <header>
+                        <h2><a th:href="${post.link}" th:text="${post.description}">Lorem ipsum dolor sit amet</a></h2>
+
+                        <p th:text="${post.from.name}">Feugiat interdum sed commodo ipsum consequat dolor
+                            nullam metus</p>
+                    </header>
+                    <div class="info">
+                    <span class="date"><span class="month" th:text="${post.createdTime} ? ${#dates.format(post.createdTime, 'MMM')}">Jul<span>y</span></span> <span class="day" th:text="${post.createdTime} ? ${#dates.format(post.createdTime, 'dd')}">8</span><span
+                            class="year" th:text="${post.createdTime} ? ${#dates.format(post.createdTime, 'yyyy')}">, 2014</span></span>
+                        <ul class="stats">
+                            <li><a href="#" class="icon fa-comment">16</a></li>
+                            <li><a href="#" class="icon fa-heart">32</a></li>
+                            <li><a href="#" class="icon fa-twitter">64</a></li>
+                            <li><a href="#" class="icon fa-facebook">128</a></li>
+                        </ul>
+                    </div>
+                    <p th:text="${post.message}"></p>
+                    <p th:text="${post.story}"></p>
+                    <p th:text="${post.caption}"></p>
+                    <img th:if="${post.picture}" th:src="${post.picture}"/>
+                    <br/>
+                </article>
+                <hr/>
+            </tr>
+
 
             <!-- Pagination -->
             <div class="pagination">
