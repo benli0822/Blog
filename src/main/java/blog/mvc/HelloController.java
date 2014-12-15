@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.inject.Inject;
 
 @Controller
+@RequestMapping("/facebook")
 public class HelloController {
 
     private Facebook facebook;
@@ -24,10 +25,10 @@ public class HelloController {
         this.facebook = facebook;
     }
 
-    @RequestMapping(value = "/facebook", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String helloFacebook(Model model) {
         if (!facebook.isAuthorized()) {
-            return "view/facebookConnect";
+            return "redirect:/connect/facebook";
         }
 
         model.addAttribute(facebook.userOperations().getUserProfile());
