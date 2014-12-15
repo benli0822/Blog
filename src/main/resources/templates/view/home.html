@@ -25,8 +25,12 @@
     <div id="content">
         <div class="inner">
 
-            <h1 th:inline="text" th:if="${#httpServletRequest.remoteUser != null}">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+            <h1 th:inline="text" th:if="${#httpServletRequest.remoteUser != null}">Hello
+                [[${#httpServletRequest.remoteUser}]]!</h1>
 
+            <div th:if="${#httpServletRequest.remoteUser != null}">
+                <h1 th:inline="text" th:if="${facebookProfile.name != null}">Hello [[${facebookProfile.name}]]!</h1>
+            </div>
 
 
             <!-- Post -->
@@ -34,13 +38,16 @@
             <tr th:each="article : ${articles}">
                 <article class="box post post-excerpt">
                     <header>
-                        <h2><a th:href="@{article(id=${article.id})}" th:text="${article.title}">Lorem ipsum dolor sit amet</a></h2>
+                        <h2><a th:href="@{article(id=${article.id})}" th:text="${article.title}">Lorem ipsum dolor sit
+                            amet</a></h2>
 
                         <p th:text="${article.author.username}">Feugiat interdum sed commodo ipsum consequat dolor
                             nullam metus</p>
                     </header>
                     <div class="info">
-                    <span class="date"><span class="month" th:text="${article.time} ? ${#dates.format(article.time, 'MMM')}">Jul<span>y</span></span> <span class="day" th:text="${article.time} ? ${#dates.format(article.time, 'dd')}">8</span><span
+                    <span class="date"><span class="month"
+                                             th:text="${article.time} ? ${#dates.format(article.time, 'MMM')}">Jul<span>y</span></span> <span
+                            class="day" th:text="${article.time} ? ${#dates.format(article.time, 'dd')}">8</span><span
                             class="year">, 2014</span></span>
                         <ul class="stats">
                             <li><a href="#" class="icon fa-comment">16</a></li>
@@ -61,7 +68,9 @@
                     </div>
                     <div class="12u$">
                         <ul class="actions" id="keyWord">
-                            <li th:text="${category.description}" th:each="category : ${article.categories}">Key Word 1</li>
+                            <li th:text="${category.description}" th:each="category : ${article.categories}">Key Word
+                                1
+                            </li>
                         </ul>
                     </div>
                     <br/>
@@ -71,46 +80,58 @@
 
             <!-- Post -->
 
-            <tr th:each="post : ${feed}">
-                <article class="box post post-excerpt">
-                    <header>
-                        <h2><a th:href="${post.link}" th:text="${post.description}">Lorem ipsum dolor sit amet</a></h2>
+            <div th:if="${#httpServletRequest.remoteUser != null}">
+                <tr th:each="post : ${feed}">
+                    <article class="box post post-excerpt">
+                        <header>
+                            <h2><a th:href="${post.link}"
+                                   th:text="${post.description} != null ? ${post.description} : 'Click here for the post'">Lorem
+                                ipsum dolor sit amet</a></h2>
 
-                        <p th:text="${post.from.name}">Feugiat interdum sed commodo ipsum consequat dolor
-                            nullam metus</p>
-                    </header>
-                    <div class="info">
-                    <span class="date"><span class="month" th:text="${post.createdTime} ? ${#dates.format(post.createdTime, 'MMM')}">Jul<span>y</span></span> <span class="day" th:text="${post.createdTime} ? ${#dates.format(post.createdTime, 'dd')}">8</span><span
+                            <p th:text="${post.from.name}">Feugiat interdum sed commodo ipsum consequat dolor
+                                nullam metus</p>
+                        </header>
+                        <div class="info">
+                    <span class="date"><span class="month"
+                                             th:text="${post.createdTime} ? ${#dates.format(post.createdTime, 'MMM')}">Jul<span>y</span></span> <span
+                            class="day"
+                            th:text="${post.createdTime} ? ${#dates.format(post.createdTime, 'dd')}">8</span><span
                             class="year" th:text="${post.createdTime} ? ${#dates.format(post.createdTime, 'yyyy')}">, 2014</span></span>
-                        <ul class="stats">
-                            <li><a href="#" class="icon fa-comment">16</a></li>
-                            <li><a href="#" class="icon fa-heart">32</a></li>
-                            <li><a href="#" class="icon fa-twitter">64</a></li>
-                            <li><a href="#" class="icon fa-facebook">128</a></li>
-                        </ul>
+                            <ul class="stats">
+                                <li><a href="#" class="icon fa-comment"
+                                       th:text="${post.comments} != null ? ${#lists.size(post.comments)} : 0">16</a>
+                                </li>
+                                <li><a href="#" class="icon fa-heart"
+                                       th:text="${post.likes} != null ? ${#lists.size(post.likes)} : 0">32</a></li>
+                                <li><a href="#" class="icon fa-facebook" th:text="${post.sharesCount}">128</a></li>
+                            </ul>
+                        </div>
+                        <p th:text="${post.message}"></p>
+
+                        <p th:text="${post.story}"></p>
+
+                        <p th:text="${post.caption}"></p>
+                        <img th:if="${post.picture}" th:src="${post.picture}"/>
+                        <br/>
+                    </article>
+                    <hr/>
+                </tr>
+            </div>
+
+            <div th:if="${#httpServletRequest.remoteUser != null}">
+                <!-- Pagination -->
+                <div class="pagination">
+                    <!--<a href="#" class="button previous">Previous Page</a>-->
+                    <div class="pages">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <span>&hellip;</span>
+                        <a href="#">20</a>
                     </div>
-                    <p th:text="${post.message}"></p>
-                    <p th:text="${post.story}"></p>
-                    <p th:text="${post.caption}"></p>
-                    <img th:if="${post.picture}" th:src="${post.picture}"/>
-                    <br/>
-                </article>
-                <hr/>
-            </tr>
-
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <!--<a href="#" class="button previous">Previous Page</a>-->
-                <div class="pages">
-                    <a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <span>&hellip;</span>
-                    <a href="#">20</a>
+                    <a href="#" class="button next">Next Page</a>
                 </div>
-                <a href="#" class="button next">Next Page</a>
             </div>
 
         </div>
@@ -134,9 +155,9 @@
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'application/json',
                 url: "http://localhost:8080/api/restPostArticle",
-                data:  JSON.stringify(article) ,// Note it is important
+                data: JSON.stringify(article),// Note it is important
                 success: function (result) {
-                    if(data.status == 'OK') alert('Person has been added');
+                    if (data.status == 'OK') alert('Person has been added');
                     else alert('Failed adding person: ' + data.status + ', ' + data.errorMessage);
                 }
             });
@@ -145,14 +166,14 @@
         }
     </script>
     <!--<script type="text/javascript">-->
-        <!--$(document).ready(function ($) {-->
-            <!--$('body').scrollToTop(-->
-                    <!--{-->
-                        <!--skin: 'cycle',-->
-                        <!--animation: 'none'-->
-                    <!--}-->
-            <!--);-->
-        <!--});-->
+    <!--$(document).ready(function ($) {-->
+    <!--$('body').scrollToTop(-->
+    <!--{-->
+    <!--skin: 'cycle',-->
+    <!--animation: 'none'-->
+    <!--}-->
+    <!--);-->
+    <!--});-->
     <!--</script>-->
 </div>
 </body>
