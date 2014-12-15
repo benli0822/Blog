@@ -24,7 +24,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
-/**
+/** Home controller and article detail controller
  * Created by JIN Benli on 17/11/14.
  */
 @Controller

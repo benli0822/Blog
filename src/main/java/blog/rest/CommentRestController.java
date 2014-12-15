@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
-/**
+/** All rest api for comments
  * Created by jamesRMBP on 14/12/14.
  */
 @Controller

@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-/**
+/** This controller is for post blog
  * Created by JIN Benli on 17/11/14.
  */
 @Controller
