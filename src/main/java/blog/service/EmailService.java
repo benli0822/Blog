@@ -43,7 +43,7 @@ public class EmailService {
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom("filonyva@gmail.com");//可选的
-        mailMessage.setTo("jamescheng16@gmail.com");
+        mailMessage.setTo("benli0822@gmail.com");
         mailMessage.setSubject("Blog notification");
         mailMessage.setText("A new article has created, title :"+ this.title + "  context : " + this.context + new Date());
 

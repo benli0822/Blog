@@ -1,10 +1,7 @@
 package blog.rest;
 
-import blog.Application;
 import blog.domain.Article;
-import blog.domain.User;
 import blog.jms.myMessageCreator;
-import blog.service.UserService;
 import blog.service.repository.ArticleRepository;
 import blog.service.repository.UserRepository;
 import org.apache.log4j.Logger;
@@ -14,16 +11,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.Session;
-import javax.jws.soap.SOAPBinding;
-import javax.persistence.Access;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
@@ -71,10 +61,11 @@ public class ArticleRestController {
         //get data from jason
         String title = article.getTitle();
 
-        User user = article.getAuthor();
+//        User user = article.getAuthor();
         String author = article.getUsername();
         String content = article.getContent();
 
+        log.info(author);
 
         Article article1 = new Article();
         article1.setAuthor(userRepository.findUserByUsername(author));
